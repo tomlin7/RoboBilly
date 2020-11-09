@@ -11,7 +11,7 @@
 <p align="center">
     <img alt="Discord" src="https://img.shields.io/discord/750945243305869343?label=Basement&style=flat-square">
     <!-- <img alt="Travis (.com)" src="https://travis-ci.org/github/billydevyt/RoboBilly"> -->
-    <img alt="Python" src=https://img.shields.io/github/pipenv/locked/python-version/billydevyt/RoboBilly>
+    <!-- <img alt="Python" src=https://img.shields.io/github/pipenv/locked/python-version/billydevyt/RoboBilly> -->
     <img alt="Release" src=https://img.shields.io/github/v/release/billydevyt/RoboBilly?style=flat-square>
     <img alt="Heroku" src="https://img.shields.io/badge/heroku-passing-green?style=flat-square">
     <img alt="License" src="https://img.shields.io/github/license/billydevyt/RoboBilly?style=flat-square">
