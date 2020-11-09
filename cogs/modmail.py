@@ -11,7 +11,7 @@ class modmail(commands.Cog):
 #=========================== DETAILS ==============================#
 
     mails_channel = "mails"          # channel to receive modmails
-    server_name = "Billy's Oasis"      #input server's name here
+    server_name = "server's name"    #input server's name here
 
 #==================================================================#
     @commands.command()
