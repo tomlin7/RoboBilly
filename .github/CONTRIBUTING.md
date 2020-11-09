@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for wanting to contribute to the BrackeysBot project! Before you start, please take a quick look at the guidelines we set for contributors, to ensure a smooth collaboration!
+Thank you for wanting to contribute to the RoboBilly project! Before you start, please take a quick look at the guidelines we set for contributors, to ensure a smooth collaboration!
 
 1. [Issues](#issues)
 2. [Pull Requests](#pull-requests)
