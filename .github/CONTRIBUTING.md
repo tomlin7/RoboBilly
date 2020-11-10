@@ -26,4 +26,4 @@ Also do note that we try to enforce consistent coding styles among the repositor
 
 ## Coding Styles
 
-In general we follow the standard [PEP 8]https://pep8.org/#naming-conventions). If you want insights to individual variable naming conventions, please refer to the existing code in the repository.
+In general we follow the standard [PEP 8](https://pep8.org/#naming-conventions). If you want insights to individual variable naming conventions, please refer to the existing code in the repository.
