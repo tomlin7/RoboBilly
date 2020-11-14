@@ -5,7 +5,7 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions, BadArgument
 import requests, json
 from datetime import timedelta, datetime
-
+import pyfiglet
 class user(commands.Cog):
     api_key = "bbde6a19c33fb4c3962e36b8187abbf8"
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -166,6 +166,71 @@ class user(commands.Cog):
             thing = discord.Embed(title="How to use Code Blocks Triggers", description="> when making codeblocks, add your language name on the beginning.\njust like this - ````python` for python language", color= discord.Color.blue())
         await (ctx.channel).send(embed=thing)
         print(f"Event. {ctx.author.name}  used how to use code blocks, bruh")
+
+    @commands.group(name="ascii", aliases=["Ascii", "art", "asc"])
+    async def ascii(self, ctx):
+        if ctx.invoked_subcommand is None:
+            await ctx.trigger_typing()
+            embed = discord.Embed(title="Ascii Modules", description="use []ascii <module>", color = discord.Color.blue())
+            embed.add_field(name="Word", value="Shows ascii art of given text.", inline=False)
+            embed.add_field(name="Fonts", value="See available Fonts.", inline=False)
+            embed.set_footer(text="use  []ascii <module> <args>")
+            await ctx.send(embed=embed)
+
+
+    @ascii.command(name="word", aliases=["w", "Word", "W"])
+    async def word(self, ctx, word:str = "hey", font:str = "standard"):
+        try:
+            result = pyfiglet.figlet_format(word, font = font)
+        except:
+            result = f"There is no font called {font}."
+        await ctx.send("```\n" + result + "\n```")
+
+    @ascii.command(name="fonts", aliases=["font", "f"])
+    async def fonts(self, ctx, page:int=1):
+        total_pages = 4
+        with open('./cogs/fonts.json', 'r') as f: 
+            try:
+                data = json.load(f)
+
+                if page == 1:
+                    page_data = data['fonts1']
+                    page_no = 1
+                elif page == 2:
+                    page_data = data['fonts2']
+                    page_no = 2
+                elif page == 3:
+                    page_data = data['fonts3']
+                    page_no = 3
+                elif page == 4:
+                    page_data = data['fonts4']
+                    page_no = 4
+                elif page is None:
+                    page_data = data['fonts1']
+                    page_no = 1
+                else:
+                    page_data = "more fonts will be added in future"
+                    page_no = 0
+            except:
+                print("fonts.json loading error")
+
+            if page_data is not None:
+                Separator = "\n"
+                fields = Separator.join(page_data)
+
+                #embeding
+                embed = discord.Embed(color = discord.Color.blue())
+                embed.set_author(name='Ascii Art')
+                embed.add_field(name='Fonts page', value=fields, inline=False)
+                if page_no != 0:
+                    embed.set_footer(text=f"page: {page_no}/{total_pages}")
+                else:
+                    embed.set_footer(text="use  []ascii fonts <page_no>")
+                await ctx.send(embed=embed)
+            else:
+                print("looks like there's a problem with page_data")
+
+
 #===================================== ADD COG ======================================#
 
 def setup(bot):

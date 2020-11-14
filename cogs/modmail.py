@@ -4,16 +4,26 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions, BadArgument
 import json 
 
+with open('./config.json', 'r') as f:   
+    try:
+        data = json.load(f)
+        _mails_channel = data["mails_channel"]
+        _server_name = data["server_name"]
+    except:
+        print("config.json is not configured correctly")
+
+class DataClass(object):
+    mails_channel = _mails_channel
+    server_name = _server_name
+        
+
 class modmail(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        data = DataClass()
+        self.mails_channel = data.mails_channel
+        self.server_name = data.server_name
 
-#=========================== DETAILS ==============================#
-
-    mails_channel = "mails"          # channel to receive modmails
-    server_name = "server's name"    #input server's name here
-
-#==================================================================#
     @commands.command()
     @commands.guild_only()
     @has_permissions(administrator=True)

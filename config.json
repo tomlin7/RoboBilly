@@ -1,4 +1,6 @@
 {
 	"Token": "get it from developer discord portal",
-	"Prefix": "[]"
+	"Prefix": "[]",
+	"mails_channel": "mails",
+    "server_name":"server's name here"
 }

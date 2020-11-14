@@ -108,6 +108,7 @@ class help(commands.Cog):
             embed.add_field(name='google', value='description', inline=False)
             embed.add_field(name='bing', value='description', inline=False)
             embed.add_field(name='dontasktoask', value="don't ask to ask, Just ask!", inline=False)
+            embed.add_field(name='ascii', value='Ascii art', inline=False)
             
             # details
             embed.set_footer(text=f'page {page}/{total_pages}')

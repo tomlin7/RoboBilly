@@ -31,24 +31,29 @@ The bot is written in **Python 3.8**, you can run it via `python bot.py` from co
 
 ## Configuration
 
-1. `config.json` is where all of the bot configuration will be placed. The only fields that are essential for running the bot are `Token` and `Prefix`
+1. `config.json` is where all of the bot configuration will be placed. The only fields that are essential for running the bot are `Token` and `Prefix`.
 
-```JSON
+```json
 {
-	"Token": "Get this from the developer dashboard!",
-	"Prefix": "[]"
+    "Token": "get it from discord developer portal",
+    "Prefix": "[]",
+    "mails_channel": "mails",
+    "server_name": "server's name here"
 }
 ```
 
-2. Add details to `cogs/modmail.py`
+2. give the bot `Administrator` permissions.
 
-```Python
-mails_channel = "mails"          # channel to receive modmails
-server_name = "server name"      #input server's name here
-```
+3. Run `setup` command in the discord server.(for running this command, the user will need administrator permissions)
 
-3. Run `setup` command in the discord server.
+## What is new?
+<p>
+<img alt="Release" src=https://img.shields.io/github/v/release/billydevyt/RoboBilly?style=flat-square>
+</p>
 
+- New Ascii text art generator module with with many fonts.
+- Error handling module
+- All configuration of the bot are moved to `config.json`
 
 ## Features
 
@@ -59,6 +64,7 @@ server_name = "server name"      #input server's name here
 |Moderation Module|All Moderation tools needed to keep the server safe and peaceful.|
 |User Module|A lot of Fun & useful commands.|
 |custom commands|custom command module, add custom commands|
+|Error Handling|error handling module|
 
 ## Contributing
 
