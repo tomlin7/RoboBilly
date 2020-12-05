@@ -13,7 +13,7 @@ class Bot(commands.Cog):
     async def ping(self, ctx):
         async with ctx.channel.typing():
     	    await asyncio.sleep(2)
-    	    ping = str(self.bot.latency * 100)
+    	    ping = str(self.bot.latency * 1000)
     	    embed = discord.Embed(title="Pong!", description=f'Ping: {ping} ms', color = discord.Color.blue())
         await ctx.send(embed=embed)
         print("Event. ", ctx.author.name, " pinged! pong!")
