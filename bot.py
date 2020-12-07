@@ -21,6 +21,8 @@ client.remove_command('help')
 #================================ COGS & EXTENSIONS =================================#
 
 client.load_extension('cogs.help')
+client.load_extension('cogs.emojify')
+client.load_extension('cogs.counting')
 client.load_extension('cogs.mod')
 client.load_extension('cogs.user')
 client.load_extension('cogs.Bot')
