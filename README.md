@@ -52,9 +52,8 @@ The bot is written in **Python 3.8**, you can run it via `python bot.py` from co
 <img alt="Release" src=https://img.shields.io/github/v/release/billydevyt/RoboBilly?style=flat-square>
 </p>
 
-- New Ascii text art generator module with with many fonts.
-- Error handling module
-- All configuration of the bot are moved to `config.json`
+- counting (need a channel called 'counting')
+- Emojify text
 
 ## Features
 
