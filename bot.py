@@ -28,6 +28,7 @@ client.load_extension('cogs.user')
 client.load_extension('cogs.Bot')
 client.load_extension('cogs.modmail')
 client.load_extension('cogs.rules')
+client.load_extension('cogs.fun')
 client.load_extension('cogs.error_handling')
 
 #===================================== EVENTS =======================================#
