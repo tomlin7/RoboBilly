@@ -60,7 +60,7 @@ The bot is written in **Python 3.8**, you can run it via `python bot.py` from co
 |Feature|Description|
 |--:|:--|
 |ModMail system|Makes it easier for users to contact moderators and admins for help.|
-|Rich Interpreters|Run commands from discord channels! [BrainFuck](https://github.com/Billy-s-Basement/Brainfuck-Interpreter-return-type), [JB](https://github.com/Billy-s-Basement/JB) languages are currently supported.|
+|Rich Interpreters|Run commands from discord channels! `BrainFuck`, `JB` languages are currently supported.|
 |Moderation Module|All Moderation tools needed to keep the server safe and peaceful.|
 |User Module|A lot of Fun & useful commands.|
 |custom commands|custom command module, add custom commands|
