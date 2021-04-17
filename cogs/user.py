@@ -100,15 +100,6 @@ class user(commands.Cog):
         print("Event. weather checked on user's command: ", ctx.author.name, ", location: ", a)
 
 
-
-    @commands.command()
-    async def google(self, ctx):
-        async with ctx.channel.typing():
-            thing = discord.Embed(title="Goooooogle!", description="Sounds like something " + "https://www.google.com/"+" would know!", color= 0xF39C12)
-        await (ctx.channel).send(embed=thing)
-        print("Event. i goooogled : ", ctx.author.name)
-
-
     @commands.command()
     async def bing(self, ctx):
         async with ctx.channel.typing():
