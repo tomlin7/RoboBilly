@@ -5,3 +5,4 @@ datetime
 sly
 pyfiglet
 mal-api==0.3.5
+jishaku
