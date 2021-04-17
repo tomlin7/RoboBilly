@@ -31,8 +31,8 @@ class Anime(commands.Cog):
             em.set_thumbnail(url = result.image_url)
             em.set_footer(text = f"{anime.premiered} • {result.type}")
             await ctx.send(embed = em)    
-        except:
-            embed = discord.Embed(description = "No such anime found in the search query.", color = discord.Color.green())
+        except Exception as e:
+            embed = discord.Embed(description = e, color = discord.Color.green())
             await ctx.send(embed = embed)
         
 def setup(bot):
