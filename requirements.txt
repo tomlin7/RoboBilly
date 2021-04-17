@@ -4,4 +4,4 @@ asyncio
 datetime
 sly
 pyfiglet
-jishaku
+mal-api==0.3.5
