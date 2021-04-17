@@ -4,3 +4,4 @@ asyncio
 datetime
 sly
 pyfiglet
+jishaku
