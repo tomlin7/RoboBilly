@@ -1,3 +1,4 @@
+import os
 import asyncio
 import discord
 import requests, json 
@@ -82,4 +83,4 @@ async def jb_error(ctx, error):
 
 #=================================== bot start =====================================#
 
-client.run(token)
+client.run(os.getenv("DISCORD_TOKEN"))
