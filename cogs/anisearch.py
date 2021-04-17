@@ -3,7 +3,7 @@ import asyncio
 from discord.ext import commands
 from mal import *
 
-class Anime(commands.Cog):
+class Weebs(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -36,4 +36,4 @@ class Anime(commands.Cog):
             await ctx.send(embed = embed)
         
 def setup(bot):
-	bot.add_cog(Anime(bot))
+	bot.add_cog(Weebs(bot))
