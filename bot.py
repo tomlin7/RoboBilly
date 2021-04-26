@@ -17,7 +17,6 @@ with open('./config.json') as f:
   prefix = data['Prefix']
 print(f"Prefix is {prefix}, you can change it in config.json")
 client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix))
-client.remove_command('help')
 
 #================================ COGS & EXTENSIONS =================================#
 
