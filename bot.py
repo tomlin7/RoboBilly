@@ -20,7 +20,7 @@ client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix))
 
 #================================ COGS & EXTENSIONS =================================#
 
-client.load_extension('cogs.help')
+# client.load_extension('cogs.help')
 client.load_extension('jishaku')
 client.load_extension('cogs.anisearch')
 # client.load_extension('cogs.emojify')
