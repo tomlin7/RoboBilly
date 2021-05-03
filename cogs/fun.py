@@ -228,7 +228,7 @@ class Fun(commands.Cog):
         
     @commands.command(name="yasahiroify", aliases=["yasafy"])
     async def yasahiroify(self, ctx, *, arguments="put something to get yasahiroified output!"):
-        await ctx.send(''.join(choice((str.upper, str.lower))(c) for c in arguments))
+        await ctx.send(''.join(random.choice((str.upper, str.lower))(c) for c in arguments))
 
     # noinspection SpellCheckingInspection
     @commands.command(name="emojify")
