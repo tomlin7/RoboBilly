@@ -225,6 +225,10 @@ class Fun(commands.Cog):
     @commands.command()
     async def uselessweb(self, ctx):
         await ctx.send(f"{random.choice(links)}")
+        
+    @commands.command(name="yasahiroify", aliases=["yasafy"])
+    async def yasahiroify(self, ctx, *, arguments="put something to get yasahiroified output!"):
+        await ctx.send(''.join(choice((str.upper, str.lower))(c) for c in arguments))
 
     # noinspection SpellCheckingInspection
     @commands.command(name="emojify")
