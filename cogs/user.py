@@ -137,6 +137,10 @@ class user(commands.Cog):
     @git.command()
     async def push(self, ctx, remote: str, branch: str):
         await ctx.send('Pushing {} to {}'.format(remote, branch))
+	
+    @git.command()
+    async def blame(self, ctx, branch: str):
+        await ctx.send('#blame{}'.format(branch))
 
     @commands.command(name='codeblocks', aliases=['codeblock', 'cb', 'paste', 'myst'])
     async def codeblocks(self, ctx, *, args = "nothing"):
