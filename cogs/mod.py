@@ -283,7 +283,7 @@ class mod(commands.Cog):
         await asyncio.sleep(2)
         await msg.delete()
     
-    @commands.command(name='slowmode',  aliases=['slow', 'slowmo','Slow', 'Slowmo'])
+    @commands.command(name='slowmode')
     @has_permissions(manage_messages=True)
     async def slowmode(self, ctx, seconds: int):
         try:
