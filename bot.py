@@ -18,6 +18,8 @@ with open('./config.json') as f:
 print(f"Prefix is {prefix}, you can change it in config.json")
 client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix))
 
+os.environ.setdefault("JISHAKU_NO_UNDERSCORE", "1")
+
 #================================ COGS & EXTENSIONS =================================#
 
 # client.load_extension('cogs.help')
