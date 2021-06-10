@@ -197,7 +197,7 @@ class Fun(commands.Cog):
 
     # SIMP RATE
     # noinspection SpellCheckingInspection
-    @commands.command(name="simprate", aliases=["Simprate"])
+    @commands.command(name="simprate")
     async def simp_rate(self, ctx, _member: discord.Member = None):
         if _member is None:
             _member = ctx.message.author
