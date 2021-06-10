@@ -16,7 +16,8 @@ with open('./config.json') as f:
   token = data['Token']
   prefix = data['Prefix']
 print(f"Prefix is {prefix}, you can change it in config.json")
-client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix))
+
+client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix), intents = discord.Intents.all(), case_insensitive = True)
 
 os.environ.setdefault("JISHAKU_NO_UNDERSCORE", "1")
 
