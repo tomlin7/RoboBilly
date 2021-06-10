@@ -162,7 +162,7 @@ class user(commands.Cog):
         await (ctx.channel).send(embed=thing)
         print(f"Event. {ctx.author.name}  used how to use code blocks, bruh")
 
-    @commands.group(name="ascii", aliases=["Ascii", "art", "asc"])
+    @commands.group(name="ascii")
     async def ascii(self, ctx):
         if ctx.invoked_subcommand is None:
             await ctx.trigger_typing()
