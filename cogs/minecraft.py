@@ -7,8 +7,8 @@ class Minecraft(commands.Cog):
         self.bot = bot
     
     
-    @commands.command(name="ip")
-    async def _ip(self, ctx, x=0, y=0, z=0):
+    @commands.command(name="coord", aliases=["coordinates", "pos"])
+    async def coord(self, ctx, x=0, y=0, z=0):
         await ctx.send(embed=Embed(title="", description=f"X: **{x}**, Y: **{y}**, Z: **{z}**", color=Color.dark_theme()))
         
 def setup(bot):
