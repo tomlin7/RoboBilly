@@ -8,3 +8,4 @@ mal-api==0.3.5
 jishaku
 pillow
 psutil
+mcstatus
