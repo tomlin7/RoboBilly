@@ -55,6 +55,8 @@ class Minecraft(commands.Cog):
         else:
             embed.add_field(name="Server 2", value="IP Address: `147.135.71.70:25592`\nOP: <@!517998886141558786>\nStatus: ✖ Offline\n".format(), inline=False)
         
+        embed.set_footer(text = f"Requested by {ctx.author.name}", icon_url = ctx.author.avatar_url)
+        
         await ctx.send(embed=embed)
         
 def setup(bot):
