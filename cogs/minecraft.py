@@ -12,7 +12,7 @@ class Minecraft(commands.Cog):
     async def mc(self, ctx):
         pass
     
-    @commands.command(name="coord", aliases=["coordinates", "pos"])
+    @commands.command(name="coord", aliases=["coordinates", "pos", "coords"])
     async def coord(self, ctx, x=0, y=0, z=0):
         await ctx.send(embed=Embed(title="", description=f"X: **{x}**, Y: **{y}**, Z: **{z}**", color=Color.dark_theme()))
         
