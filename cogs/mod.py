@@ -321,7 +321,7 @@ class mod(commands.Cog):
         except:
             embed = discord.Embed(title="Slowmode", description="Couldn't set slowmode!", color=discord.Color.red())
         await ctx.send(embed=embed)
-	
+        
     @commands.command(name="rep", aliases=['reputation'])
     @has_permissions(manage_messages=True)
     async def rep(self, ctx, userr: discord.Member, score: int = None):
@@ -430,16 +430,15 @@ class mod(commands.Cog):
             '**Thanks Reputation**',
             showauth=True
         )
-	
+    
     @commands.command(name="myrep", aliases=['myreputation', 'myr'])
     @has_permissions(manage_messages=True)
     async def myrep(self, ctx, userr: discord.Member=None):
         """check/give reputation"""
         await ctx.trigger_typing()
         await ctx.message.delete()
-	
-	if not userr:
-	    userr = ctx.author
+    if not userr:
+        userr = ctx.author
 
         collection = rsetup(ctx.guild.id)
         user = userr.id
@@ -449,15 +448,15 @@ class mod(commands.Cog):
         # user's data doesn't exist in db
         if (does_not_exist(userr.id, collection)):
             post = {
-		'_id': user,
-            	'name': username,
-               	'reputation': 10
-      	    }
+                '_id': user,
+                'name': username,
+                'reputation': 10
+            }
             collection.insert_one(post)
                 
             current_reputation = reputation(user, collection)
             message = f"{userr.name} has {current_reputation} reputation in this server."
-	    embed = getEmbed("Reputation", message)
+            embed = getEmbed("Reputation", message)
             await ctx.send(embed=embed)
         # user's data does exist in the db
         else:
@@ -469,4 +468,4 @@ class mod(commands.Cog):
 #===================================== ADD COG ======================================#
 
 def setup(bot):
-	bot.add_cog(mod(bot))
+    bot.add_cog(mod(bot))
