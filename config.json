@@ -3,5 +3,5 @@
 	"Prefix": "[]",
 	"mails_channel": "mails",
 	"server_name":"Billy's Basement",
-    	"mongo_url":"mongodb+srv://bot:bot@cluster0.6fcsb.mongodb.net/test"
+    	"mongo_url":""
 }
