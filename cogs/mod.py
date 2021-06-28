@@ -4,9 +4,37 @@
 import discord
 import asyncio
 from discord.ext import commands
-from discord.ext.commands import has_permissions, MissingPermissions, BadArgument
+from discord.ext.commands import has_permissions
+from discord.ext.commands.cooldowns import BucketType
 import requests, json 
-from datetime import timedelta, datetime
+from datetime import datetime
+import pymongo
+from pymongo import MongoClient
+
+with open("./config.json", "r") as f:
+    config = json.load(f)
+    mongo_url = config['mongo_url']
+cluster = MongoClient(mongo_url)
+repdb = cluster["ReputationData"]
+
+# functions:
+def rsetup(col):
+    col = str(col)
+    return repdb[col]
+
+def reputation(userid, collection):
+    query = {"_id": userid}
+    user = collection.find(query)
+    for result in user:
+        return result["reputation"]
+
+def getEmbed(Title, msg):
+    embed = discord.Embed(title=Title, description=msg, color=discord.Color.blue())
+    return embed
+
+def does_not_exist(userid, collection):
+    check_query = { "_id": userid }
+    return (collection.count_documents(check_query) == 0)
 
 
 class mod(commands.Cog):
@@ -84,7 +112,7 @@ class mod(commands.Cog):
                     )
         now = datetime.now()
         log_embed.timestamp = now
-        log_channel = discord.utils.get(guild.text_channels, name="mod-logs")
+        log_channel = discord.utils.get(guild.text_channels, name="billy-logs")
         await log_channel.send(embed=log_embed)
     
     ## MOD COMMANDS
@@ -292,6 +320,115 @@ class mod(commands.Cog):
         except:
             embed = discord.Embed(title="Slowmode", description="Couldn't set slowmode!", color=discord.Color.red())
         await ctx.send(embed=embed)
+	
+    @commands.command(name="rep", aliases=['reputation'])
+    @has_permissions(manage_messages=True)
+    async def rep(self, ctx, userr: discord.Member, score: int = None):
+        """check/give reputation"""
+        await ctx.trigger_typing()
+        await ctx.message.delete()
+
+        collection = rsetup(ctx.guild.id)
+        user = userr.id
+        username = str(userr)
+        score = score
+
+        # data doesn't exist
+        if (does_not_exist(userr.id, collection)):
+            if not score:
+                post = {
+                    '_id': user,
+                    'name': username,
+                    'reputation': 10
+                }
+                collection.insert_one(post)
+                
+                current_reputation = reputation(user, collection)
+                message = f"{userr.name} has {current_reputation} reputation in this server."
+                embed = getEmbed("Reputation", message)
+                await ctx.send(embed=embed)
+            else:
+                post = {
+                    '_id': user,
+                    'name': username,
+                    'reputation': score
+                }
+                collection.insert_one(post)
+
+                current_reputation = reputation(user, collection)
+                message = f"{userr.name} has currently {current_reputation} reputation."
+                embed = getEmbed("Reputation", message)
+                await ctx.send(embed=embed)
+        # data do exist
+        else:
+            if not score:
+                current_reputation = reputation(user, collection)
+                message = f"{userr.name} has {current_reputation} reputation in this server."
+                embed = getEmbed("Reputation", message)
+                await ctx.send(embed=embed)
+            else:
+                current_reputation = reputation(user, collection)
+                current_reputation += score
+                collection.update_one({"_id":user}, {"$set":{"name": username,"reputation": current_reputation}})
+
+                current_reputation = reputation(user, collection)
+                message = f"{userr.name} now has {current_reputation} reputation."
+                embed = getEmbed("Reputation", message)
+                await ctx.send(embed=embed)
+        await self.log(
+            ctx,
+            f"{user.name}'s reputation data has been updated by {ctx.author.name}.",
+            '**Reputation**',
+            showauth=True
+        )
+
+    @commands.command(name="reset", aliases=['r', 'Reset'])
+    @has_permissions(manage_messages=True)
+    async def reset(self, ctx, userr: discord.Member):
+        user = userr.id
+        collection = rsetup(ctx.guild.id)
+        current_reputation = 10
+        collection.update_one({"_id":user}, {"$set":{"reputation": current_reputation}})
+        message = f"{user.name}'s reputation data has been cleaned."
+        embed = getEmbed("User Data Reset", message)
+        await ctx.send(embed=embed)
+
+        await self.log(
+            ctx,
+            f"{user.name}'s reputation data has been cleaned by {ctx.author.name}.",
+            '**User Data Reset**',
+            showauth=True
+        )
+
+    @commands.command(name="thanks", aliases=['thx', 'thnx'])
+    @commands.guild_only()
+    @commands.cooldown(rate=1, per=600, type=BucketType.user)
+    async def Thanks(self, ctx, user: discord.Member):
+        if ctx.author.id == user.id:
+            return
+        collection = rsetup(ctx.guild.id)
+        user = user.id
+        username = str(user)
+        check_query = { "_id": user }
+
+
+        if (collection.count_documents(check_query) == 0):
+            post = {
+                '_id': user,
+                'name': username,
+                'reputation': 11
+            }
+            collection.insert_one(post)
+        else:
+            current_reputation = reputation(user, collection)
+            current_reputation += 1
+            collection.update_one({"_id":user}, {"$set":{"reputation": current_reputation}})
+        await self.log(
+            ctx,
+            f"{user.name}'s got thanked by {ctx.author.name}.",
+            '**Thanks Reputation**',
+            showauth=True
+        )
 
 #===================================== ADD COG ======================================#
 
