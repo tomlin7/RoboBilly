@@ -9,3 +9,4 @@ jishaku
 pillow
 psutil
 mcstatus
+pymongo
