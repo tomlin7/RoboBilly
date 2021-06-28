@@ -430,6 +430,41 @@ class mod(commands.Cog):
             '**Thanks Reputation**',
             showauth=True
         )
+	
+    @commands.command(name="myrep", aliases=['myreputation', 'myr'])
+    @has_permissions(manage_messages=True)
+    async def myrep(self, ctx, userr: discord.Member=None):
+        """check/give reputation"""
+        await ctx.trigger_typing()
+        await ctx.message.delete()
+	
+	if not userr:
+	    userr = ctx.author
+
+        collection = rsetup(ctx.guild.id)
+        user = userr.id
+        username = str(userr)
+        score = score
+
+        # user's data doesn't exist in db
+        if (does_not_exist(userr.id, collection)):
+            post = {
+		'_id': user,
+            	'name': username,
+               	'reputation': 10
+      	    }
+            collection.insert_one(post)
+                
+            current_reputation = reputation(user, collection)
+            message = f"{userr.name} has {current_reputation} reputation in this server."
+	    embed = getEmbed("Reputation", message)
+            await ctx.send(embed=embed)
+        # user's data does exist in the db
+        else:
+            current_reputation = reputation(user, collection)
+            message = f"{userr.name} has {current_reputation} reputation in this server."
+            embed = getEmbed("Reputation", message)
+            await ctx.send(embed=embed)
 
 #===================================== ADD COG ======================================#
 
