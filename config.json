@@ -2,5 +2,6 @@
 	"Token": "get it from developer discord portal",
 	"Prefix": "[]",
 	"mails_channel": "mails",
-    "server_name":"server's name here"
+	"server_name":"Billy's Basement",
+    	"mongo_url":"mongodb+srv://bot:bot@cluster0.6fcsb.mongodb.net/test"
 }
