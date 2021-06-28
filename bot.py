@@ -42,7 +42,7 @@ client.load_extension('cogs.error_handling')
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    await client.change_presence(activity=discord.Game(name="Karlson"))
+    await client.change_presence(activity=discord.Game(name="Beanson"))
 
 #=================================== INTERPRETERS =======================================#
 
