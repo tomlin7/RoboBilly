@@ -1,6 +1,7 @@
 
 ############## MODERATION MODULE ##############
 
+import os
 import discord
 import asyncio
 from discord.ext import commands
@@ -14,7 +15,7 @@ from pymongo import MongoClient
 with open("./config.json", "r") as f:
     config = json.load(f)
     mongo_url = config['mongo_url']
-cluster = MongoClient(mongo_url)
+cluster = MongoClient(os.getenv("MONGO_URL"))
 repdb = cluster["ReputationData"]
 
 # functions:
