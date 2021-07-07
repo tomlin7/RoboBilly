@@ -59,7 +59,7 @@ class Minecraft(commands.Cog):
         
         await ctx.send(embed=embed)
         
-    @mc.command(aliases=['players', 'onlineplayers'])
+    @mc.command(name="serverplayers", aliases=['players', 'onlineplayers'])
     async def serverplayers(ctx):
         status = None
         status1 = None
