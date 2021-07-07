@@ -61,45 +61,45 @@ class Minecraft(commands.Cog):
         
     @mc.command(name="playerlist", aliases=['players', 'onlineplayers', 'playerslist'])
     async def playerlist(self, ctx):
-        status = None
         status1 = None
+        status2 = None
         
-        msg = ""
         msg1 = ""
+        msg2 = ""
         
         try:
             server = MinecraftServer.lookup("billysbasement.aternos.me")
-            status = server.status()
+            status1 = server.status()
         except Exception as e:
             await ctx.send(e)
         
         try:
             server1 = MinecraftServer.lookup("147.135.71.70:25592")
-            status1 = server1.status()
+            status2 = server1.status()
         except Exception as e:
             await ctx.send(e)
 
-        if status is None:
-            msg += "Server Offline!"
-        elif status is not None:
-            if status.players.sample is not None:
-                for x in status.players.sample:
-                    msg += f"🔸 {x.name}\n"
-            elif status.players.sample is None:
-                msg += "There are no players online!"
-                
         if status1 is None:
             msg1 += "Server Offline!"
         elif status1 is not None:
             if status1.players.sample is not None:
                 for x in status1.players.sample:
-                    msg1 += f"🔹 {x.name}\n"
+                    msg1 += f"🔸 {x.name}\n"
             elif status1.players.sample is None:
-                msg1 += "There are no players online!"
+                msg1 += "\nThere are no players online!"
+                
+        if status2 is None:
+            msg2 += "Server Offline!"
+        elif status2 is not None:
+            if status2.players.sample is not None:
+                for x in status2.players.sample:
+                    msg2 += f"🔹 {x.name}\n"
+            elif status2.players.sample is None:
+                msg2 += "\nThere are no players online!"
 
         em = discord.Embed(title="Online Players", color=discord.Color.dark_theme())
-        em.add_field(name="billysbasement.aternos.me", value=msg, inline=False)
-        em.add_field(name="147.135.71.70:25592", value=msg1, inline=False)
+        em.add_field(name="billysbasement.aternos.me", value=msg1, inline=False)
+        em.add_field(name="147.135.71.70:25592", value=msg2, inline=False)
         await ctx.send(embed=em)
         
 def setup(bot):
