@@ -141,6 +141,10 @@ class user(commands.Cog):
     @git.command()
     async def blame(self, ctx, branch: str):
         await ctx.send('#blame{}'.format(branch))
+	
+    @git.command()
+    async def merge(self, ctx, thing, anotherthing):
+        await ctx.send('Merging {0} to {1}'.format(thing, anotherthing))
 
     @commands.command(name='codeblocks', aliases=['codeblock', 'cb', 'paste', 'myst'])
     async def codeblocks(self, ctx, *, args = "nothing"):
