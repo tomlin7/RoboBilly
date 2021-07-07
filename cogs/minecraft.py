@@ -70,14 +70,14 @@ class Minecraft(commands.Cog):
         try:
             server = MinecraftServer.lookup("billysbasement.aternos.me")
             status = server.status()
-        except:
-            pass
+        except Exception as e:
+            await ctx.send(e)
         
         try:
             server1 = MinecraftServer.lookup("147.135.71.70:25592")
             status1 = server1.status()
-        except:
-            pass
+        except Exception as e:
+            await ctx.send(e)
 
         if status is None:
             msg += "Server Offline!"
