@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-    RoboBilly is a Discord bot with Unique Features.
+    "Don't bully me pls"
 </p>
 
 <br/>
