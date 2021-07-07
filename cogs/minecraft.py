@@ -59,5 +59,41 @@ class Minecraft(commands.Cog):
         
         await ctx.send(embed=embed)
         
+    @mc.command(name="serverplayers", aliases=['players', 'onlineplayers'])
+    async def serverplayers(ctx):
+        status = None
+        status1 = None
+        msg = ""
+        msg1 = ""
+        try:
+            server = MinecraftServer.lookup("billysbasement.aternos.me")
+            status = server1.status()
+        except:
+            pass
+        try:
+            server1 = MinecraftServer.lookup("147.135.71.70:25592")
+            status1 = server1.status()
+        except:
+            pass
+        if status1 is not None and status1.players.sample is not None:
+            for x in status1.players.sample:
+                msg1 += f"{x.name}\n"
+        elif status1 is None:
+            msg1 += "Server Offline!"
+        elif status1.players.sample is None:
+            msg1 += "There are no players online!"
+        if status is not None and status.players.sample is not None:
+            for x in status.players.sample:
+                msg += f"{x.name}\n"
+        elif status is None:
+            msg += "Server Offline!"
+        elif status.players.sample is None:
+            msg += "There are no players online!"
+
+        em = discord.Embed(title="Online Players", color=discord.Color.dark_theme())
+        em.add_field(name="billysbasement.aternos.me", value=msg)
+        em.add_field(name="147.135.71.70:25592", value=msg1, inline=False)
+        await ctx.send(embed=em)
+        
 def setup(bot):
     bot.add_cog(Minecraft(bot))
