@@ -71,12 +71,14 @@ class Minecraft(commands.Cog):
             server = MinecraftServer.lookup("billysbasement.aternos.me")
             status1 = server.status()
         except Exception as e:
+            print(e)
             await ctx.send(e)
         
         try:
             server1 = MinecraftServer.lookup("147.135.71.70:25592")
             status2 = server1.status()
         except Exception as e:
+            print(e)
             await ctx.send(e)
 
         if status1 is None:
