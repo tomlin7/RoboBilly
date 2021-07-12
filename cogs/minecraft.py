@@ -87,6 +87,7 @@ class Minecraft(commands.Cog):
                     msg1 += f"🔸 {x.name}\n"
             elif status1.players.sample is None:
                 msg1 += "\nThere are no players online!"
+        print(msg1)
                 
         if status2 is None:
             msg2 += "Server Offline!"
@@ -96,6 +97,8 @@ class Minecraft(commands.Cog):
                     msg2 += f"🔹 {x.name}\n"
             elif status2.players.sample is None:
                 msg2 += "\nThere are no players online!"
+                
+        print(msg2)
         await ctx.send(msg1)
         await ctx.send(msg2)
         em = discord.Embed(title="Online Players", color=discord.Color.dark_theme())
