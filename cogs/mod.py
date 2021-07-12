@@ -25,9 +25,8 @@ def rsetup(col):
 
 def reputation(userid, collection):
     query = {"_id": userid}
-    user = collection.find(query)
-    for result in user:
-        return result["reputation"]
+    users = collection.find(query)
+    return users[0]["reputation"]
 
 def getEmbed(Title, msg):
     embed = discord.Embed(title=Title, description=msg, color=discord.Color.blue())
@@ -35,7 +34,7 @@ def getEmbed(Title, msg):
 
 def does_not_exist(userid, collection):
     check_query = { "_id": userid }
-    return (collection.count_documents(check_query) == 0)
+    return collection.count_documents(check_query) == 0
 
 
 class mod(commands.Cog):
@@ -327,7 +326,6 @@ class mod(commands.Cog):
     async def rep(self, ctx, userr: discord.Member, score: int = None):
         """check/give reputation"""
         await ctx.trigger_typing()
-        await ctx.message.delete()
 
         collection = rsetup(ctx.guild.id)
         user = userr.id
@@ -343,8 +341,10 @@ class mod(commands.Cog):
                     'reputation': 10
                 }
                 collection.insert_one(post)
-                
-                current_reputation = reputation(user, collection)
+                try:
+                    current_reputation = reputation(user, collection)
+                except:
+                    return
                 message = f"{userr.name} has {current_reputation} reputation in this server."
                 embed = getEmbed("Reputation", message)
                 await ctx.send(embed=embed)
@@ -356,23 +356,35 @@ class mod(commands.Cog):
                 }
                 collection.insert_one(post)
 
-                current_reputation = reputation(user, collection)
+                try:
+                    current_reputation = reputation(user, collection)
+                except:
+                    return
                 message = f"{userr.name} has currently {current_reputation} reputation."
                 embed = getEmbed("Reputation", message)
                 await ctx.send(embed=embed)
         # data do exist
         else:
             if not score:
-                current_reputation = reputation(user, collection)
+                try:
+                    current_reputation = reputation(user, collection)
+                except:
+                    return
                 message = f"{userr.name} has {current_reputation} reputation in this server."
                 embed = getEmbed("Reputation", message)
                 await ctx.send(embed=embed)
             else:
-                current_reputation = reputation(user, collection)
+                try:
+                    current_reputation = reputation(user, collection)
+                except:
+                    return
                 current_reputation += score
                 collection.update_one({"_id":user}, {"$set":{"name": username,"reputation": current_reputation}})
 
-                current_reputation = reputation(user, collection)
+                try:
+                    current_reputation = reputation(user, collection)
+                except:
+                    return
                 message = f"{userr.name} now has {current_reputation} reputation."
                 embed = getEmbed("Reputation", message)
                 await ctx.send(embed=embed)
@@ -393,7 +405,7 @@ class mod(commands.Cog):
         message = f"{user.name}'s reputation data has been cleaned."
         embed = getEmbed("User Data Reset", message)
         await ctx.send(embed=embed)
-
+        await ctx.message.add_reaction("✅")
         await self.log(
             ctx,
             f"{user.name}'s reputation data has been cleaned by {ctx.author.name}.",
@@ -421,9 +433,13 @@ class mod(commands.Cog):
             }
             collection.insert_one(post)
         else:
-            current_reputation = reputation(user, collection)
+            try:
+                current_reputation = reputation(user, collection)
+            except:
+                return
             current_reputation += 1
             collection.update_one({"_id":user}, {"$set":{"reputation": current_reputation}})
+        await ctx.message.add_reaction("✅")
         await self.log(
             ctx,
             f"{user.name}'s got thanked by {ctx.author.name}.",
@@ -431,12 +447,10 @@ class mod(commands.Cog):
             showauth=True
         )
     
-    @commands.command(name="myrep", aliases=['myreputation', 'myr'])
-    @has_permissions(manage_messages=True)
+    @commands.command(name="myrep", aliases=['myreputation'])
     async def myrep(self, ctx, userr: discord.Member=None):
         """check/give reputation"""
         await ctx.trigger_typing()
-        await ctx.message.delete()
         if not userr:
             userr = ctx.author
 
@@ -444,28 +458,45 @@ class mod(commands.Cog):
         user = userr.id
         username = str(userr)
         score = score
+        
+        current_reputation = 0
 
         # user's data doesn't exist in db
-        if (does_not_exist(userr.id, collection)):
+        if (does_not_exist(user, collection)):
             post = {
                 '_id': user,
                 'name': username,
                 'reputation': 10
             }
             collection.insert_one(post)
-                
-            current_reputation = reputation(user, collection)
-            message = f"{userr.name} has {current_reputation} reputation in this server."
-            embed = getEmbed("Reputation", message)
-            await ctx.send(embed=embed)
+            current_reputation = 10
         # user's data does exist in the db
         else:
-            current_reputation = reputation(user, collection)
-            message = f"{userr.name} has {current_reputation} reputation in this server."
-            embed = getEmbed("Reputation", message)
-            await ctx.send(embed=embed)
+            try:
+                current_reputation = reputation(user, collection)
+            except:
+                return
+        message = f"{userr.name} has {current_reputation} reputation in this server."
+        embed = getEmbed("Reputation", message)
+        await ctx.send(embed=embed)
+    
+    @commands.command(name="leaderboard", aliases=['top', 'reptop'])
+    async def leaderboard(self, ctx, userr: discord.Member=None):
+        collection = rsetup(ctx.guild.id)
+        embed = discord.Embed(color=discord.Color.dark_theme())
+        holder = ""
+        sorted_users = collection.find().sort("reputation")[:6]
+        
+        holder += f"🥇 **{sorted_users[0]['reputation']}** - {sorted_users[0]['name']}\n"
+        holder += f"🥈 **{sorted_users[1]['reputation']}** - {sorted_users[0]['name']}\n"
+        holder += f"🥉 **{sorted_users[2]['reputation']}** - {sorted_users[0]['name']}\n"
+        holder += f"🏅 **{sorted_users[3]['reputation']}** - {sorted_users[0]['name']}\n"
+        holder += f"🏅 **{sorted_users[4]['reputation']}** - {sorted_users[0]['name']}\n"
+        
+        embed.add_field(title="Reputation Leaderboard", value=holder)
+        
+        await ctx.send(embed=embed)
 
-#===================================== ADD COG ======================================#
-
+        
 def setup(bot):
     bot.add_cog(mod(bot))
