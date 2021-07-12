@@ -10,3 +10,5 @@ pillow
 psutil
 mcstatus
 pymongo
+cairosvg
+chess
