@@ -71,7 +71,7 @@ class user(commands.Cog):
         async with ctx.channel.typing():
             thing = "hello human!"
         await (ctx.channel).send(thing)
-        print("Event. I said Hi to  ", ctx.author.name)
+        print("Event. I said Hi to ", ctx.author.name)
 
 
     @commands.command()

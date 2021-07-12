@@ -62,7 +62,7 @@ class rules(commands.Cog):
         '''Displays the nth rule, if exits'''
         await ctx.message.delete()
 
-        ctx.trigger_typing()
+        await ctx.trigger_typing()
         if n is not None:
             try:
                 # deciding values

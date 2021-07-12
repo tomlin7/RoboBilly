@@ -311,7 +311,7 @@ class mod(commands.Cog):
         await asyncio.sleep(2)
         await msg.delete()
     
-    @commands.command(name='slowmode')
+    @commands.command(name='slowmode', aliases=["slow"])
     @has_permissions(manage_messages=True)
     async def slowmode(self, ctx, seconds: int):
         try:
@@ -323,9 +323,11 @@ class mod(commands.Cog):
         
     @commands.command(name="rep", aliases=['reputation'])
     @has_permissions(manage_messages=True)
-    async def rep(self, ctx, userr: discord.Member, score: int = None):
+    async def rep(self, ctx, userr: discord.Member = None, score: int = None):
         """check/give reputation"""
         await ctx.trigger_typing()
+        if not userr:
+            userr = ctx.author
 
         collection = rsetup(ctx.guild.id)
         user = userr.id
@@ -457,7 +459,6 @@ class mod(commands.Cog):
         collection = rsetup(ctx.guild.id)
         user = userr.id
         username = str(userr)
-        score = score
         
         current_reputation = 0
 
@@ -477,26 +478,24 @@ class mod(commands.Cog):
             except:
                 return
         message = f"{userr.name} has {current_reputation} reputation in this server."
-        embed = getEmbed("Reputation", message)
+        embed = discord.Embed(title="Reputation", description=message, color=discord.Color.dark_theme())
         await ctx.send(embed=embed)
     
     @commands.command(name="leaderboard", aliases=['top', 'reptop'])
-    async def leaderboard(self, ctx, userr: discord.Member=None):
+    async def leaderboard(self, ctx):
         collection = rsetup(ctx.guild.id)
-        # embed = discord.Embed(color=discord.Color.dark_theme())
+        embed = discord.Embed(color=discord.Color.dark_theme())
         holder = ""
-        sorted_users = collection.find().sort("reputation")[:6]
+        sorted_users = collection.find().sort("reputation", pymongo.DESCENDING)
         
         holder += f"🥇 **{sorted_users[0]['reputation']}** - {sorted_users[0]['name']}\n"
-        holder += f"🥈 **{sorted_users[1]['reputation']}** - {sorted_users[0]['name']}\n"
-        holder += f"🥉 **{sorted_users[2]['reputation']}** - {sorted_users[0]['name']}\n"
-        holder += f"🏅 **{sorted_users[3]['reputation']}** - {sorted_users[0]['name']}\n"
-        holder += f"🏅 **{sorted_users[4]['reputation']}** - {sorted_users[0]['name']}\n"
-        print(holder)
-        await ctx.send(holder)
-        # embed.add_field(title="Reputation Leaderboard", value=holder)
-        
-        # await ctx.send(embed=embed)
+        holder += f"🥈 **{sorted_users[1]['reputation']}** - {sorted_users[1]['name']}\n"
+        holder += f"🥉 **{sorted_users[2]['reputation']}** - {sorted_users[2]['name']}\n"
+        holder += f"🏅 **{sorted_users[3]['reputation']}** - {sorted_users[3]['name']}\n"
+        holder += f"🏅 **{sorted_users[4]['reputation']}** - {sorted_users[4]['name']}\n"
+
+        embed.add_field(name="Reputation Leaderboard", value=holder)
+        await ctx.send(embed=embed)
 
         
 def setup(bot):

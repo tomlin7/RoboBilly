@@ -7,7 +7,7 @@ from discord.ext.commands import MissingRequiredArgument
 from datetime import timedelta, datetime
 from cogs.libs import brainfuck   # BrainFu*k Interpreter
 from cogs.libs import getch
-from cogs.libs.JB import jbin     #JB Interpreter - JB language is in beta
+# from cogs.libs.JB import jbin     #JB Interpreter - JB language is in beta
 
 #===================================== ROOT =========================================#
 
@@ -35,7 +35,9 @@ client.load_extension('cogs.minecraft')
 client.load_extension('cogs.modmail')
 client.load_extension('cogs.rules')
 client.load_extension('cogs.fun')
-client.load_extension('cogs.error_handling')
+client.load_extension('cogs.chess')
+client.load_extension('cogs.events')
+# client.load_extension('cogs.error_handling')
 
 #===================================== EVENTS =======================================#
 
@@ -62,33 +64,33 @@ async def bf(ctx, *, thing: str = None):
         embed.add_field(name='Syntax Error', value="> No result for you, shoo shoo")
     await ctx.send(embed=embed)
 
-@client.command(name='jb', aliases=['jB', 'Jb', 'JB'])
-async def jb(ctx, *, thing):
-    """JB Interpreter"""
-    await ctx.trigger_typing()
-    result = jbin(thing)
-    if result is not None:
-        embed = discord.Embed(color = discord.Color.blue())
-        embed.set_author(name="JB Interpreter")
-        embed.add_field(name='Output', value=f"> {result}")
-    else:
-        embed = discord.Embed(color = discord.Color.red())
-        embed.set_author(name="JB Interpreter")
-        embed.add_field(name='Syntax Error', value="> No result for you, shoo shoo")
-    await ctx.send(embed=embed)
-@jb.error
-async def jb_error(ctx, error):
-    if isinstance(error, MissingRequiredArgument):
-        await ctx.trigger_typing()
-        embed = discord.Embed(color = discord.Color.red())
-        embed.set_author(name="JB Interpreter")
-        embed.add_field(name='Syntax Error', value="> I think you need to put smthn, lol")
-        await ctx.send(embed=embed)
+# @client.command(name='jb', aliases=['jB', 'Jb', 'JB'])
+# async def jb(ctx, *, thing):
+#     """JB Interpreter"""
+#     await ctx.trigger_typing()
+#     result = jbin(thing)
+#     if result is not None:
+#         embed = discord.Embed(color = discord.Color.blue())
+#         embed.set_author(name="JB Interpreter")
+#         embed.add_field(name='Output', value=f"> {result}")
+#     else:
+#         embed = discord.Embed(color = discord.Color.red())
+#         embed.set_author(name="JB Interpreter")
+#         embed.add_field(name='Syntax Error', value="> No result for you, shoo shoo")
+#     await ctx.send(embed=embed)
+# @jb.error
+# async def jb_error(ctx, error):
+#     if isinstance(error, MissingRequiredArgument):
+#         await ctx.trigger_typing()
+#         embed = discord.Embed(color = discord.Color.red())
+#         embed.set_author(name="JB Interpreter")
+#         embed.add_field(name='Syntax Error', value="> I think you need to put smthn, lol")
+#         await ctx.send(embed=embed)
 
 class NewHelpCommand(commands.MinimalHelpCommand):
     async def send_pages(self):
         destination = self.get_destination()
-        e = discord.Embed(color=discord.Color.blurple(), description='')
+        e = discord.Embed(color=discord.Color.dark_theme(), description='')
         for page in self.paginator.pages:
             e.description += page
         await destination.send(embed=e)

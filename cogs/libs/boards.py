@@ -1,0 +1,3 @@
+boards = {
+    "user": "board"
+}
