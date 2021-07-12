@@ -96,7 +96,8 @@ class Minecraft(commands.Cog):
                     msg2 += f"🔹 {x.name}\n"
             elif status2.players.sample is None:
                 msg2 += "\nThere are no players online!"
-
+        await ctx.send(msg1)
+        await ctx.send(msg2)
         em = discord.Embed(title="Online Players", color=discord.Color.dark_theme())
         em.add_field(name="billysbasement.aternos.me", value=msg1, inline=False)
         em.add_field(name="147.135.71.70:25592", value=msg2, inline=False)
