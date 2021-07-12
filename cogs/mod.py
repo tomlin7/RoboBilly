@@ -483,7 +483,7 @@ class mod(commands.Cog):
     @commands.command(name="leaderboard", aliases=['top', 'reptop'])
     async def leaderboard(self, ctx, userr: discord.Member=None):
         collection = rsetup(ctx.guild.id)
-        embed = discord.Embed(color=discord.Color.dark_theme())
+        # embed = discord.Embed(color=discord.Color.dark_theme())
         holder = ""
         sorted_users = collection.find().sort("reputation")[:6]
         
@@ -492,10 +492,11 @@ class mod(commands.Cog):
         holder += f"🥉 **{sorted_users[2]['reputation']}** - {sorted_users[0]['name']}\n"
         holder += f"🏅 **{sorted_users[3]['reputation']}** - {sorted_users[0]['name']}\n"
         holder += f"🏅 **{sorted_users[4]['reputation']}** - {sorted_users[0]['name']}\n"
+        print(holder)
+        await ctx.send(holder)
+        # embed.add_field(title="Reputation Leaderboard", value=holder)
         
-        embed.add_field(title="Reputation Leaderboard", value=holder)
-        
-        await ctx.send(embed=embed)
+        # await ctx.send(embed=embed)
 
         
 def setup(bot):
