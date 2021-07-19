@@ -182,7 +182,7 @@ class Fun(commands.Cog):
         
     @commands.Cog.listener()
     async def on_message_delete(self, msg):
-        temp = {msg.channel.id : msg.content}
+        temp = {msg.channel.id : { "content": msg.content, "author": message.author}}
         del_cache.update(temp)
 
     @commands.command(aliases=['8ball', '8 ball'])
@@ -391,8 +391,9 @@ class Fun(commands.Cog):
     async def snipe(self, ctx):
         channel = ctx.channel.id
         try:
-            msg = del_cache[channel]
-            await ctx.send(msg)
+            msg = del_cache[channel]['content']
+            author = del_cache[channel]['author']
+            await ctx.send(f"{msg} - {author}")
         except:
             await ctx.send("No messages to snipe!")
 
