@@ -173,10 +173,17 @@ emo2 = {
     "_": " ",
 }
 
+del_cache = {}
+
 
 class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        
+    @commands.Cog.listener()
+    async def on_message_delete(self, msg):
+        temp = {msg.channel.id : msg.content}
+        del_cache.update(temp)
 
     @commands.command(aliases=['8ball', '8 ball'])
     async def _8ball(self, ctx, *, que=None):
@@ -379,6 +386,15 @@ class Fun(commands.Cog):
     @commands.command(aliases=['OwO'])
     async def owo(self, ctx):
         await ctx.send("OwO")
+        
+    @commands.command()
+    async def snipe(self, ctx):
+        channel = ctx.channel.id
+        try:
+            msg = del_cache[channel]
+            await ctx.send(msg)
+        except:
+            await ctx.send("No messages to snipe!")
 
 
 def setup(bot):
