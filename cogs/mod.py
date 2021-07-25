@@ -440,7 +440,7 @@ class mod(commands.Cog):
             except:
                 return
             current_reputation += 1
-            collection.update_one({"_id":user}, {"$set":{"reputation": current_reputation}})
+            collection.update_one({"_id":user}, {"$set":{"name": username,"reputation": current_reputation}})
         await ctx.message.add_reaction("✅")
         await self.log(
             ctx,
@@ -451,7 +451,7 @@ class mod(commands.Cog):
     
     @commands.command(name="myrep", aliases=['myreputation'])
     async def myrep(self, ctx, userr: discord.Member=None):
-        """check/give reputation"""
+        """check reputation"""
         await ctx.trigger_typing()
         if not userr:
             userr = ctx.author
@@ -475,6 +475,7 @@ class mod(commands.Cog):
         else:
             try:
                 current_reputation = reputation(user, collection)
+                collection.update_one({"_id":user}, {"$set":{"name": username}})
             except:
                 return
         message = f"{userr.name} has {current_reputation} reputation in this server."
