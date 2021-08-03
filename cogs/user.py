@@ -1,5 +1,6 @@
 ###### USER MODULE ######
 import discord
+import random
 import asyncio
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions, BadArgument
@@ -141,6 +142,13 @@ class user(commands.Cog):
     @git.command()
     async def blame(self, ctx, branch: str):
         await ctx.send('#blame{}'.format(branch))
+	
+	@git.command()
+    async def lick(self, ctx, user):
+		if random.choice([True, False]):
+        	await ctx.send('*licks {}, Mmm tastes good*'.format(user))
+		else:
+			await ctx.send('*licks {}, euh tastes kinda bad*'.format(user))
 	
     @git.command()
     async def merge(self, ctx, thing, anotherthing):
