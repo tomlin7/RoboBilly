@@ -142,7 +142,7 @@ class user(commands.Cog):
     @git.command()
     async def blame(self, ctx, branch: str):
         await ctx.send('#blame{}'.format(branch))
-	
+
 	@git.command()
     async def lick(self, ctx, user):
 		if random.choice([True, False]):
