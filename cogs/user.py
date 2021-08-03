@@ -138,18 +138,18 @@ class user(commands.Cog):
     @git.command()
     async def push(self, ctx, remote: str, branch: str):
         await ctx.send('Pushing {} to {}'.format(remote, branch))
-	
+    
     @git.command()
     async def blame(self, ctx, branch: str):
         await ctx.send('#blame{}'.format(branch))
 
-	@git.command()
+    @git.command()
     async def lick(self, ctx, user):
-		if random.choice([True, False]):
-        	await ctx.send('*licks {}, Mmm tastes good*'.format(user))
-		else:
-			await ctx.send('*licks {}, euh tastes kinda bad*'.format(user))
-	
+        if random.choice([True, False]):
+            await ctx.send('*licks {}, Mmm tastes good*'.format(user))
+        else:
+            await ctx.send('*licks {}, euh tastes kinda bad*'.format(user))
+    
     @git.command()
     async def merge(self, ctx, thing, anotherthing):
         await ctx.send('Merging {0} to {1}'.format(thing, anotherthing))
@@ -241,4 +241,4 @@ class user(commands.Cog):
 #===================================== ADD COG ======================================#
 
 def setup(bot):
-	bot.add_cog(user(bot))
+    bot.add_cog(user(bot))
