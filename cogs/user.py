@@ -107,6 +107,11 @@ class user(commands.Cog):
             thing = discord.Embed(title="Bong!", description="Sounds like something " + "https://www.bing.com/"+" would know!", color= 0xF39C12)
         await (ctx.channel).send(embed=thing)
         print("Event. I binged, bong! :  ", ctx.author.name)
+        
+    @commands.command()
+    async def google(self, ctx):
+        await ctx.send("It is quite important that you **google your problems before asking** someone. Most of your questions have already been answered at least once online because you are definitely not the only one with this particular question. Additionally, each programming language, API, or program should be well documented in its official documentation. \nRefer to this page: https://duck-dev.github.io/general/how-to-google/")
+        print("Event. how to google! :  ", ctx.author.name)
 
 
     @commands.command()
