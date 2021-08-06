@@ -218,8 +218,8 @@ class Fun(commands.Cog):
         await ctx.send(embed=em)
 
     # GOOGLE
-    @commands.command(name="google")
-    async def google(self, ctx, *, q):
+    @commands.command(name="lemmegoogle")
+    async def lemmegoogle(self, ctx, *, q):
         await ctx.send(f"http://letmegooglethat.com/?q={q}".replace(" ", "+"))
 
     # GREEN TEXT
