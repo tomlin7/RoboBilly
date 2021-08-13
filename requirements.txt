@@ -12,3 +12,4 @@ mcstatus
 pymongo
 cairosvg
 chess
+matplotlib
