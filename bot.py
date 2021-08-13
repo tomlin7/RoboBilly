@@ -8,8 +8,10 @@ from datetime import timedelta, datetime
 from cogs.libs import brainfuck   # BrainFu*k Interpreter
 from cogs.libs import getch
 # from cogs.libs.JB import jbin     #JB Interpreter - JB language is in beta
-
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+try:
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+except:
+    pass
 #===================================== ROOT =========================================#
 
 with open('./config.json') as f:
