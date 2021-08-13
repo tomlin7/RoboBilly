@@ -13,3 +13,4 @@ pymongo
 cairosvg
 chess
 matplotlib
+aiodns
