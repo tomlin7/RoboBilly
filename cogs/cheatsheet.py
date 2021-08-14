@@ -7,8 +7,7 @@ from discord import Embed
 from discord.ext import commands
 from discord.ext.commands import BucketType, Context
 
-import socket
-from aiohttp import AsyncResolver, ClientSession, TCPConnector
+from libs.httpsession import http_session
 
 ERROR_REPLIES = [
     "Please don't do that.",
@@ -46,9 +45,6 @@ class CheatSheet(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.http_session = ClientSession(
-            connector=TCPConnector(resolver=AsyncResolver(), family=socket.AF_INET)
-        )
 
     @staticmethod
     def fmt_error_embed() -> Embed:
@@ -104,7 +100,7 @@ class CheatSheet(commands.Cog):
         async with ctx.typing():
             search_string = quote_plus(" ".join(search_terms))
 
-            async with self.http_session.get(
+            async with http_session.get(
                     URL.format(search=search_string), headers=HEADERS
             ) as response:
                 result = ANSI_RE.sub("", await response.text()).translate(ESCAPE_TT)

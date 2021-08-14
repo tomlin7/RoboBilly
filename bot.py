@@ -7,11 +7,9 @@ from discord.ext.commands import MissingRequiredArgument
 from datetime import timedelta, datetime
 from cogs.libs import brainfuck   # BrainFu*k Interpreter
 from cogs.libs import getch
+from libs import httpsession
 # from cogs.libs.JB import jbin     #JB Interpreter - JB language is in beta
-try:
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-except:
-    pass
+
 #===================================== ROOT =========================================#
 
 with open('./config.json') as f:
@@ -26,7 +24,6 @@ os.environ.setdefault("JISHAKU_NO_UNDERSCORE", "1")
 
 #================================ COGS & EXTENSIONS =================================#
 
-# client.load_extension('cogs.help')
 client.load_extension('jishaku')
 client.load_extension('cogs.anisearch')
 # client.load_extension('cogs.emojify')
@@ -36,14 +33,15 @@ client.load_extension('cogs.user')
 client.load_extension('cogs.catify')
 client.load_extension('cogs.latex')
 client.load_extension('cogs.cheatsheet')
+
 client.load_extension('cogs.Bot')
 client.load_extension('cogs.minecraft')
 client.load_extension('cogs.modmail')
 client.load_extension('cogs.rules')
 client.load_extension('cogs.fun')
-# client.load_extension('cogs.chess')
+client.load_extension('cogs.chess')
 client.load_extension('cogs.events')
-# client.load_extension('cogs.error_handling')
+client.load_extension('cogs.error_handling')
 
 #===================================== EVENTS =======================================#
 
