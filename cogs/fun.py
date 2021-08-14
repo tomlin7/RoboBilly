@@ -182,7 +182,7 @@ class Fun(commands.Cog):
         
     @commands.Cog.listener()
     async def on_message_delete(self, msg):
-        temp = {msg.channel.id : { "content": msg.content, "author": message.author}}
+        temp = {msg.channel.id : { "content": msg.content, "author": msg.author}}
         del_cache.update(temp)
 
     @commands.command(aliases=['8ball', '8 ball'])

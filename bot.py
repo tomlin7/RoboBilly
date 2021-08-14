@@ -33,7 +33,7 @@ client.load_extension('cogs.user')
 client.load_extension('cogs.catify')
 client.load_extension('cogs.latex')
 client.load_extension('cogs.cheatsheet')
-
+client.load_extension('cogs.githubinfo')
 client.load_extension('cogs.Bot')
 client.load_extension('cogs.minecraft')
 client.load_extension('cogs.modmail')
