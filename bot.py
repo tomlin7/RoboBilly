@@ -7,7 +7,7 @@ from discord.ext.commands import MissingRequiredArgument
 from datetime import timedelta, datetime
 from cogs.libs import brainfuck   # BrainFu*k Interpreter
 from cogs.libs import getch
-from libs import httpsession, close_session
+from libs import httpsession
 # from cogs.libs.JB import jbin     #JB Interpreter - JB language is in beta
 
 #===================================== ROOT =========================================#
@@ -56,7 +56,7 @@ async def on_ready():
 @client.command()
 @client.is_owner()
 async def close_http_session():
-    close_session()
+    httpsession.close_session()
 
 @client.command(name='bf', aliases=['brainfuck', 'BrainFuck'])
 async def bf(ctx, *, thing: str = None):
