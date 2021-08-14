@@ -169,22 +169,22 @@ class user(commands.Cog):
     @git.command()
     async def status(self, ctx, user: discord.Member=None):
         if user:
-            await ctx.send("On branch {0}\nYour branch is up to date with 'origin/main'. \nstatus:{1}".format(user.display_name, user.status))
+            await ctx.send("On branch {0}\nYour branch is up to date with 'origin/main'. \nstatus: {1}".format(user.display_name, user.status))
         else:
-            await ctx.send("On branch main\nYour branch is up to date with 'origin/main'. \nstatus:{}".format(ctx.author.status))
+            await ctx.send("On branch main\nYour branch is up to date with 'origin/main'. \nstatus: {}".format(ctx.author.status))
 
     @git.command()
     async def merge(self, ctx, thing, anotherthing):
         await ctx.send('Merging {0} to {1}'.format(thing, anotherthing))
     
     @git.command()
-    async def add(self, ctx, thing):
+    async def add(self, ctx, *, thing):
         msg = await ctx.send('Adding {0}...'.format(thing))
         await asyncio.sleep(2)
-        await msg.edit(content='Added {} to changes.\n`{1} additions and {2} deletions.`'.format(thing, random.randint(10, 1000), random.randint(10, 1000)))
+        await msg.edit(content='Added {0} to changes.\n`{1} additions and {2} deletions.`'.format(thing, random.randint(10, 1000), random.randint(10, 1000)))
     
     @git.command()
-    async def out(self):
+    async def out(self, ctx, *, thing):
         await ctx.send('https://tenor.com/view/the-office-steve-carell-please-leave-get-out-move-gif-3579774')
 
     @commands.command(name='codeblocks', aliases=['codeblock', 'cb', 'myst'])
