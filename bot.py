@@ -54,7 +54,7 @@ async def on_ready():
 #=================================== INTERPRETERS =======================================#
 
 @client.command()
-@client.is_owner()
+@commands.is_owner()
 async def close_http_session():
     httpsession.close_session()
 
