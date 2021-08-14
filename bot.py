@@ -7,7 +7,7 @@ from discord.ext.commands import MissingRequiredArgument
 from datetime import timedelta, datetime
 from cogs.libs import brainfuck   # BrainFu*k Interpreter
 from cogs.libs import getch
-from libs import httpsession
+from libs import httpsession, close_session
 # from cogs.libs.JB import jbin     #JB Interpreter - JB language is in beta
 
 #===================================== ROOT =========================================#
@@ -34,6 +34,7 @@ client.load_extension('cogs.catify')
 client.load_extension('cogs.latex')
 client.load_extension('cogs.cheatsheet')
 client.load_extension('cogs.githubinfo')
+client.load_extension('cogs.stackoverflow')
 client.load_extension('cogs.Bot')
 client.load_extension('cogs.minecraft')
 client.load_extension('cogs.modmail')
@@ -51,6 +52,11 @@ async def on_ready():
     await client.change_presence(activity=discord.Game(name="Beanson"))
 
 #=================================== INTERPRETERS =======================================#
+
+@client.command()
+@client.is_owner()
+async def close_http_session():
+    close_session()
 
 @client.command(name='bf', aliases=['brainfuck', 'BrainFuck'])
 async def bf(ctx, *, thing: str = None):
