@@ -15,7 +15,7 @@ class user(commands.Cog):
         self.bot = bot
     
     def get_embed(self, _title, _description, icon):
-        embed = discord.Embed(title=_title, description=_description, color= 0xF39C12) #,color=#F39C12
+        embed = discord.Embed(title=_title, description=_description, color= discord.Color.dark_theme())
         embed.set_thumbnail(url=icon)
         return embed
 
@@ -64,7 +64,7 @@ class user(commands.Cog):
         async with ctx.channel.typing():
             thing = arg
         await (ctx.channel).send(thing)
-        print("Event. said: ", arg, ", puppy repeated: ", ctx.author.name)
+        print("Event: Repeated {ctx.author.name}: ", arg)
 
 
     @commands.command()
@@ -72,7 +72,7 @@ class user(commands.Cog):
         async with ctx.channel.typing():
             thing = "hello human!"
         await (ctx.channel).send(thing)
-        print("Event. I said Hi to ", ctx.author.name)
+        print("Event: I said Hi to ", ctx.author.name)
 
 
     @commands.command()
@@ -97,14 +97,14 @@ class user(commands.Cog):
         async with ctx.channel.typing():
             msg = self.get_weather(a)
             await asyncio.sleep(2)
-        await ctx.send(embed=self.get_embed(f"Weather status at {a}", msg, "https://i.pinimg.com/564x/77/0b/80/770b805d5c99c7931366c2e84e88f251.jpg"))
+        await ctx.send(embed=discord.Embed(title=f"Weather status at {a}", description=msg, color=discord.Color.dark_theme()))
         print("Event. weather checked on user's command: ", ctx.author.name, ", location: ", a)
 
 
     @commands.command()
     async def bing(self, ctx):
         async with ctx.channel.typing():
-            thing = discord.Embed(title="Bong!", description="Sounds like something " + "https://www.bing.com/"+" would know!", color= 0xF39C12)
+            thing = discord.Embed(title="Bong!", description="Sounds like something " + "https://www.bing.com/"+" would know!", color=discord.Color.dark_theme())
         await (ctx.channel).send(embed=thing)
         print("Event. I binged, bong! :  ", ctx.author.name)
         
@@ -117,28 +117,31 @@ class user(commands.Cog):
     @commands.command()
     async def dontasktoask(self, ctx):
         async with ctx.channel.typing():
-            thing = discord.Embed(title="Don't ask to ask, Just ask!", description="Ask your question, instead of asking to help \nhttps://dontasktoask.com/", color= 0xF39C12)
+            thing = discord.Embed(title="Don't ask to ask, Just ask!", description="Ask your question, instead of asking to help \nhttps://dontasktoask.com/", color=discord.Color.dark_theme())
         await (ctx.channel).send(embed = thing)
         print("Event. ", ctx.author.name, " did ask to ask!")
     
     @commands.command(name='goodnight', aliases=['night', 'gn'])
     async def goodnight(self, ctx, *, args = "nothing"):
         async with ctx.channel.typing():
-            thing = discord.Embed(title="Good Night", description="Sleep tight", color= discord.Color.blue())
+            thing = discord.Embed(title="Good Night", description="Sleep tight", color= discord.Color.dark_theme())
         await (ctx.channel).send(embed=thing)
         print(f"Event. {ctx.author.name}  said good night")
     
     @commands.command(name='goodmorning', aliases=['morning', 'gm'])
     async def goodmorning(self, ctx, *, args = "nothing"):
         async with ctx.channel.typing():
-            thing = discord.Embed(title="Good Morning", description="Wishing you a good day", color= discord.Color.blue())
+            thing = discord.Embed(title="Good Morning", description="Wishing you a good day", color= discord.Color.dark_theme())
         await (ctx.channel).send(embed=thing)
         print(f"Event. {ctx.author.name}  said good morning")
     
     @commands.group()
     async def git(self, ctx):
+        """
+        A set of funny ~~useful~~ git commands.
+        """
         if ctx.invoked_subcommand is None:
-            await ctx.send('Invalid git command passed...')
+            await ctx.send('> See: `[]help git`')
 
     @git.command()
     async def push(self, ctx, remote: str, branch: str):
@@ -156,34 +159,62 @@ class user(commands.Cog):
             await ctx.send('*licks {}, euh tastes kinda bad*'.format(user))
     
     @git.command()
+    async def commit(self, ctx, *, message: str):
+        await ctx.send('Commiting {}'.format(message))
+
+    @git.command()
+    async def pull(self, ctx, branch: str):
+        await ctx.send('Pulling {}'.format(branch))
+    
+    @git.command()
+    async def status(self, ctx, user: discord.Member=None):
+        if user:
+            await ctx.send("On branch {0}\nYour branch is up to date with 'origin/main'. \nstatus:{1}".format(user.display_name, user.status))
+        else:
+            await ctx.send("On branch main\nYour branch is up to date with 'origin/main'. \nstatus:{}".format(ctx.author.status))
+
+    @git.command()
     async def merge(self, ctx, thing, anotherthing):
         await ctx.send('Merging {0} to {1}'.format(thing, anotherthing))
+    
+    @git.command()
+    async def add(self, ctx, thing):
+        msg = await ctx.send('Adding {0}...'.format(thing))
+        await asyncio.sleep(2)
+        await msg.edit(content='Added {} to changes.\n`{1} additions and {2} deletions.`'.format(thing, random.randint(10, 1000), random.randint(10, 1000)))
+    
+    @git.command()
+    async def out(self):
+        await ctx.send('https://tenor.com/view/the-office-steve-carell-please-leave-get-out-move-gif-3579774')
 
-    @commands.command(name='codeblocks', aliases=['codeblock', 'cb', 'paste', 'myst'])
+    @commands.command(name='codeblocks', aliases=['codeblock', 'cb', 'myst'])
     async def codeblocks(self, ctx, *, args = "nothing"):
         async with ctx.channel.typing():
-            thing = discord.Embed(title="Code Blocks", description="Use codeblocks to send lengthy code, paste it into https://paste.myst.rs/ and send the link of the paste into chat.", color= discord.Color.blue())
+            thing = discord.Embed(title="Code Blocks", description="""**__Use codeblocks to send code in a message!__**
+
+To make a codeblock, surround your code with \`\`\`
+\`\`\`cs
+// your code here
+\`\`\`
+
+`In order use C# syntax highlighting add cs after the three back ticks`
+
+To send lengthy code, paste it into <https://paste.myst.rs/> and send the link of the paste into chat.""", color=discord.Color.dark_theme())
         await (ctx.channel).send(embed=thing)
-        print(f"Event. {ctx.author.name}  used code blocks")
+        print(f"Event: {ctx.author.name}  used codeblocks")
     
-    @commands.command(name='howcodeblocks', aliases=['howcb', 'hcb', 'howcodeblock'])
-    async def howcodeblocks(self, ctx, *, args = "nothing"):
+    @commands.command(name='pastemyst', aliases=['pm', 'pastebin', 'PasteMyst', 'paste'])
+    async def pastemyst(self, ctx, *, args = "nothing"):
         async with ctx.channel.typing():
-            thing = discord.Embed(title="How to use Code Blocks", description="> 1. paste your code into https://paste.myst.rs/\n> 2. copy the link of the website completely\n> 3. send the link into chat.", color= discord.Color.blue())
+            thing = discord.Embed(title="How to use PasteMyst", description="> 1. paste your code in https://paste.myst.rs/\n> 2. copy the link of the website completely\n> 3. send the link into chat.", color=discord.Color.dark_theme())
         await (ctx.channel).send(embed=thing)
-        print(f"Event. {ctx.author.name}  used how to use code blocks, bruh")
-    @commands.command(name='codeblocktriggers', aliases=['cbt', 'codeblocktrigger', 'codeblockstriggers', 'cbtrigger', 'cbtriggers'])
-    async def codeblocktriggers(self, ctx, *, args='nothing'):
-        async with ctx.channel.typing():
-            thing = discord.Embed(title="How to use Code Blocks Triggers", description="> when making codeblocks, add your language name on the beginning.\njust like this - ````python` for python language", color= discord.Color.blue())
-        await (ctx.channel).send(embed=thing)
-        print(f"Event. {ctx.author.name}  used how to use code blocks, bruh")
+        print(f"Event: {ctx.author.name}  used how to use pastemyst")
 
     @commands.group(name="ascii")
     async def ascii(self, ctx):
         if ctx.invoked_subcommand is None:
             await ctx.trigger_typing()
-            embed = discord.Embed(title="Ascii Modules", description="use []ascii <module>", color = discord.Color.blue())
+            embed = discord.Embed(title="Ascii Modules", description="use []ascii <module>", color = discord.Color.dark_theme())
             embed.add_field(name="Word", value="Shows ascii art of given text.", inline=False)
             embed.add_field(name="Fonts", value="See available Fonts.", inline=False)
             embed.set_footer(text="use  []ascii <module> <args>")
@@ -231,7 +262,7 @@ class user(commands.Cog):
                 fields = Separator.join(page_data)
 
                 #embeding
-                embed = discord.Embed(color = discord.Color.blue())
+                embed = discord.Embed(color = discord.Color.dark_theme())
                 embed.set_author(name='Ascii Art')
                 embed.add_field(name='Fonts page', value=fields, inline=False)
                 if page_no != 0:
