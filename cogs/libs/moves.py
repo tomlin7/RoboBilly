@@ -10,7 +10,11 @@ def legal_moves(_user_id):
     shows possible legal moves.
     """
     _board = boards[_user_id]
-    return format_content(", ".join(_board.legal_moves))
+    
+    list_moves  = []
+    for move in _board.legal_moves:
+        list_moves.append(str(move))
+    return format_content(", ".join(list_moves))
 
 
 def legal_move(_user_id, _move):
