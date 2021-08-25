@@ -63,10 +63,10 @@ class Stackoverflow(commands.Cog):
             embed.add_field(
                 name=unescape(item['title']),
                 value=(
-                    f"⬆ {item['score']}    "
+                    f"[⬆ {item['score']}    "
                     f"👀 {item['view_count']}     "
                     f"💬 {item['answer_count']}   "
-                    f"🏷 {', '.join(item['tags'][:3])}]"
+                    f"[🏷 {', '.join(item['tags'][:3])}]"
                     f"({item['link']})"
                 ),
                 inline=False)
