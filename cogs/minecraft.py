@@ -71,14 +71,14 @@ class Minecraft(commands.Cog):
             status1 = server.status()
         except Exception as e:
             print(e)
-            await ctx.send(e)
+            # await ctx.send(e)
         
         try:
             server1 = MinecraftServer.lookup("147.135.71.70:25592")
             status2 = server1.status()
         except Exception as e:
             print(e)
-            await ctx.send(e)
+            # await ctx.send(e)
 
         try:
             if status1 is None:
@@ -106,10 +106,10 @@ class Minecraft(commands.Cog):
         except:
              msg2 += "..."
         
-#         if msg1 == "" or msg1 is None:
-#             msg1 += "..."
-#         if msg2 == "" or msg2 is None:
-#             msg2 += "..."
+        if msg1 == "" or msg1 is None:
+            msg1 += "..."
+        if msg2 == "" or msg2 is None:
+            msg2 += "..."
         
         # await ctx.send(msg1)
         # await ctx.send(msg2)
