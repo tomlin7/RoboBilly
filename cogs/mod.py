@@ -321,6 +321,11 @@ class mod(commands.Cog):
             embed = discord.Embed(title="Slowmode", description="Couldn't set slowmode!", color=discord.Color.red())
         await ctx.send(embed=embed)
         
+    @commands.command(name='activity', aliases=["presence", "changeactivity"])
+    @has_permissions(manage_messages=True)
+    async def activity(self, ctx, seconds: int):
+        await self.bot.change_presence(activity=discord.Game(name="Beanson"))
+        
     @commands.command(name="rep", aliases=['reputation'])
     @has_permissions(manage_messages=True)
     async def rep(self, ctx, userr: discord.Member = None, score: int = None):
