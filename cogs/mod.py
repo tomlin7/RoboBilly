@@ -323,8 +323,8 @@ class mod(commands.Cog):
         
     @commands.command(name='activity', aliases=["presence", "changeactivity"])
     @has_permissions(manage_messages=True)
-    async def activity(self, ctx, seconds: int):
-        await self.bot.change_presence(activity=discord.Game(name="Beanson"))
+    async def activity(self, ctx, _activity="beanson"):
+        await self.bot.change_presence(activity=discord.Game(name=_activity))
         
     @commands.command(name="rep", aliases=['reputation'])
     @has_permissions(manage_messages=True)
