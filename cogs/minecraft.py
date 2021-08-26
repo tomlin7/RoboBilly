@@ -23,8 +23,6 @@ class Minecraft(commands.Cog):
         embed.add_field(name="Server 2", value="**IP Address**:`147.135.71.70:25592`\n**OP**:<@!517998886141558786>", inline=False)
         await ctx.send(embed=embed)
     
-    
-    
     @mc.command(name="serverinfo", aliases=["sinfo", "mcinfo"])
     async def serverinfo(self, ctx):
         status1 = None
@@ -101,8 +99,8 @@ class Minecraft(commands.Cog):
                 msg2 += "\nThere are no players online!"
                 
         print(msg2)
-        await ctx.send(msg1)
-        await ctx.send(msg2)
+        # await ctx.send(msg1)
+        # await ctx.send(msg2)
         em = discord.Embed(title="Online Players", color=discord.Color.dark_theme())
         em.add_field(name="billysbasement.aternos.me", value=msg1, inline=False)
         em.add_field(name="147.135.71.70:25592", value=msg2, inline=False)
