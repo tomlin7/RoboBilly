@@ -83,7 +83,7 @@ class Minecraft(commands.Cog):
         if status1 is None:
             msg1 += "Server Offline!"
         elif status1 is not None:
-            if status1.players.sample is not None:
+            if len(status1.players.sample) != 0:
                 for x in status1.players.sample:
                     msg1 += f"🔸 {x.name}\n"
             elif status1.players.sample is None:
@@ -93,7 +93,7 @@ class Minecraft(commands.Cog):
         if status2 is None:
             msg2 += "Server Offline!"
         elif status2 is not None:
-            if status2.players.sample is not None:
+            if len(status2.players.sample) != 0:
                 for x in status2.players.sample:
                     msg2 += f"🔹 {x.name}\n"
             elif status2.players.sample is None:
