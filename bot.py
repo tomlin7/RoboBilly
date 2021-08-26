@@ -55,7 +55,7 @@ async def on_ready():
 
 @client.command()
 @commands.is_owner()
-async def close_http_session():
+async def close_http_session(ctx):
     httpsession.close_session()
 
 @client.command(name='bf', aliases=['brainfuck', 'BrainFuck'])
