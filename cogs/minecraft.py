@@ -80,26 +80,31 @@ class Minecraft(commands.Cog):
             print(e)
             await ctx.send(e)
 
-        if status1 is None:
-            msg1 += "Server Offline!"
-        elif status1 is not None:
-            if len(status1.players.sample) != 0:
-                for x in status1.players.sample:
-                    msg1 += f"🔸 {x.name}\n"
-            elif status1.players.sample is None:
-                msg1 += "\nThere are no players online!"
-        print(msg1)
+        try:
+            if status1 is None:
+                msg1 += "Server Offline!"
+            elif status1 is not None:
+                if len(status1.players.sample) != 0:
+                    for x in status1.players.sample:
+                        msg1 += f"🔸 {x.name}\n"
+                elif status1.players.sample is None:
+                    msg1 += "\nThere are no players online!"
+            print(msg1)
+        except:
+             msg1 += "\n..."
+        try:
+            if status2 is None:
+                msg2 += "Server Offline!"
+            elif status2 is not None:
+                if len(status2.players.sample) != 0:
+                    for x in status2.players.sample:
+                        msg2 += f"🔹 {x.name}\n"
+                elif status2.players.sample is None:
+                    msg2 += "\nThere are no players online!"
+            print(msg2)
+        except:
+             msg2 += "\n..."
                 
-        if status2 is None:
-            msg2 += "Server Offline!"
-        elif status2 is not None:
-            if len(status2.players.sample) != 0:
-                for x in status2.players.sample:
-                    msg2 += f"🔹 {x.name}\n"
-            elif status2.players.sample is None:
-                msg2 += "\nThere are no players online!"
-                
-        print(msg2)
         # await ctx.send(msg1)
         # await ctx.send(msg2)
         em = discord.Embed(title="Online Players", color=discord.Color.dark_theme())
