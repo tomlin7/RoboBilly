@@ -104,7 +104,12 @@ class Minecraft(commands.Cog):
             print(msg2)
         except:
              msg2 += "\n..."
-                
+        
+        if msg1 == "" or msg1 is None:
+            msg1 += "..."
+        if msg2 == "" or msg2 is None:
+            msg2 += "..."
+        
         # await ctx.send(msg1)
         # await ctx.send(msg2)
         em = discord.Embed(title="Online Players", color=discord.Color.dark_theme())
