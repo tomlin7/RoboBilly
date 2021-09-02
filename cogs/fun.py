@@ -183,6 +183,8 @@ class Fun(commands.Cog):
     @commands.Cog.listener()
     async def on_raw_message_delete(self, payload): 
         msg = payload.cached_message
+        if msg.author == self.bot.user:
+            return
         temp = {msg.channel.id : { "content": msg.content, "author": msg.author}}
         del_cache.update(temp)
 
