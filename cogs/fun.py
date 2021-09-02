@@ -177,6 +177,9 @@ del_cache = {}
 
 
 class Fun(commands.Cog):
+    """
+    Fun commands cog
+    """
     def __init__(self, bot):
         self.bot = bot
         
@@ -392,6 +395,9 @@ class Fun(commands.Cog):
         
     @commands.command()
     async def snipe(self, ctx):
+        """
+        Shows the last deleted message from a specified channel
+        """
         channel = ctx.channel.id
         try:
             msg = del_cache[channel]['content']
