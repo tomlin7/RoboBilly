@@ -181,7 +181,8 @@ class Fun(commands.Cog):
         self.bot = bot
         
     @commands.Cog.listener()
-    async def on_message_delete(self, msg):
+    async def on_raw_message_delete(self, payload): 
+        msg = payload.cached_message
         temp = {msg.channel.id : { "content": msg.content, "author": msg.author}}
         del_cache.update(temp)
 
@@ -394,9 +395,10 @@ class Fun(commands.Cog):
             msg = del_cache[channel]['content']
             author = del_cache[channel]['author']
             await ctx.send(f"{msg} - {author}")
-        except:
+        except Exception as e:
+            print(e)
             await ctx.send("No messages to snipe!")
 
-
+            
 def setup(bot):
     bot.add_cog(Fun(bot))
