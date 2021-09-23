@@ -10,6 +10,12 @@ from cogs.libs import getch
 from libs import httpsession
 # from cogs.libs.JB import jbin     #JB Interpreter - JB language is in beta
 
+# debug
+
+import pathlib
+print(pathlib.Path().resolve())
+
+
 #===================================== ROOT =========================================#
 
 with open('./config.json') as f:
