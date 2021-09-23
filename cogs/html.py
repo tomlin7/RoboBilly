@@ -3,6 +3,7 @@ from discord.ext import commands
 import imgkit
 
 # install wkhtmltopdf
+os.system("apt-get install sudo")
 os.system("sudo apt install wkhtmltopdf")
 
 
