@@ -8,6 +8,7 @@ import imgkit
 # path_wkthmltoimage = "/app/wkhtmltoimage.exe"
 # config = imgkit.config(wkhtmltoimage=path_wkthmltoimage)
 
+os.system("wkhtmltoimage index.html out.pdf")
 
 
 class Html(commands.Cog):
