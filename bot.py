@@ -15,18 +15,22 @@ debug = True
 
 
 if debug:
+    print("-------------------------------------------")
     from sys import platform
-    print(platform)
+    print("platform: ", platform)
 
     import pathlib
     print("path: ", pathlib.Path().resolve())
 
+    print("--------- dir ----------")
+    os.system("dir")
+
     try:
-        os.system("dir")
-        os.system("dir /s wkhtmltoimage.exe")
+        print("--------- find wkhtmltoimage.exe ----------")
+        os.system("find ~ -name wkhtmltoimage.exe")        
     except:
-        os.system("ls")
-        os.system("find ~ -name wkhtmltoimage.exe")
+        print("--------- find wkhtmltoimage.exe ----------")
+        os.system("dir /s wkhtmltoimage.exe")
 
 
 #===================================== ROOT =========================================#
