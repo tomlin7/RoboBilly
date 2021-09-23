@@ -22,13 +22,11 @@ if debug:
     print("path: ", pathlib.Path().resolve())
 
     try:
-        os.system("ls")
-        print("ok that was ls, hmmm linux")
-        os.system("find ~ -name wkhtmltoimage.exe")
-    except:
         os.system("dir")
-        print("this is dir, hmmm windows")
         os.system("dir /s wkhtmltoimage.exe")
+    except:
+        os.system("ls")
+        os.system("find ~ -name wkhtmltoimage.exe")
 
 
 #===================================== ROOT =========================================#
