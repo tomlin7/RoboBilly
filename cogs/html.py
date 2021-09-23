@@ -3,6 +3,14 @@ from discord.ext import commands
 import imgkit
 
 
+
+# config imgkit
+
+path_wkthmltoimage = "/app/wkhtmltoimage.exe"
+config = imgkit.config(wkhtmltoimage=path_wkthmltoimage)
+
+
+
 class Html(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -19,7 +27,7 @@ class Html(commands.Cog):
         options = {
             'format': 'png'
         }
-        imgkit.from_file('html_img.html', 'out.png', options=options)
+        imgkit.from_file('html_img.html', 'out.png', options=options, config=config)
 
         await ctx.send(file=discord.File("out.png"))
 
@@ -29,7 +37,7 @@ class Html(commands.Cog):
             'format': 'png',
             'encoding': "UTF-8",
         }
-        imgkit.from_url(str(url), 'out.png', options=options)
+        imgkit.from_url(str(url), 'out.png', options=options, config=config)
         await ctx.send(file=discord.File("out.png"))
         
         

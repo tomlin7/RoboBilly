@@ -11,18 +11,23 @@ from libs import httpsession
 # from cogs.libs.JB import jbin     #JB Interpreter - JB language is in beta
 
 # debug
+debug = False
 
-import pathlib
-print("path: ", pathlib.Path().resolve())
 
-try:
-    os.system("ls")
-    print("ok that was ls, hmmm linux")
-    os.system("find ~ -name wkhtmltoimage.exe")
-except:
-    os.system("dir")
-    print("this is dir, hmmm windows")
-    os.system("dir /s wkhtmltoimage.exe")
+
+if debug:
+    import pathlib
+    print("path: ", pathlib.Path().resolve())
+
+    try:
+        os.system("ls")
+        print("ok that was ls, hmmm linux")
+        os.system("find ~ -name wkhtmltoimage.exe")
+    except:
+        os.system("dir")
+        print("this is dir, hmmm windows")
+        os.system("dir /s wkhtmltoimage.exe")
+
 
 #===================================== ROOT =========================================#
 
