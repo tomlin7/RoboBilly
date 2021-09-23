@@ -14,3 +14,4 @@ cairosvg
 chess
 matplotlib
 aiodns
+imgkit
