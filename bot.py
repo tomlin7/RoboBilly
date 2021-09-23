@@ -11,11 +11,13 @@ from libs import httpsession
 # from cogs.libs.JB import jbin     #JB Interpreter - JB language is in beta
 
 # debug
-debug = False
-
+debug = True
 
 
 if debug:
+    from sys import platform
+    print(platform)
+
     import pathlib
     print("path: ", pathlib.Path().resolve())
 
