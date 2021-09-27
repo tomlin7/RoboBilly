@@ -19,7 +19,7 @@ class Ajian(commands.Cog):
     @ajian.command()
     async def bonk(self, ctx):
         if random.choice([True, False]):
-            await ctx.send(f"*bonks ajian {('like hell wtf he', '**gently**')[bool(random.randint(0, 10) == 5)]}*")
+            await ctx.send(f"*bonks ajian {('like hell wtf', '**gently**')[bool(random.randint(0, 10) == 5)]}*")
         else:
             await ctx.send("You got bonked by ajian, get got!")
 
