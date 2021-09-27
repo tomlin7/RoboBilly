@@ -18,9 +18,10 @@ class Ajian(commands.Cog):
     @ajian.command()
     async def bonk(self, ctx):
         if random.choice([True, False]):
-            await ctx.send("We've successfully bonked ajian")
+            await ctx.send(f"_bonks ajian{('', '**gently**')[bool(random.randint(0, 10) == 5)]}_")
         else:
             await ctx.send("You got bonked by ajian, get got!")
+
 
     @ajian.command()
     async def hug(self, ctx):
