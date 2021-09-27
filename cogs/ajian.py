@@ -8,7 +8,7 @@ class Ajian(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @commands.group
+    @commands.group()
     async def ajian(self, ctx):
         """
         >.<
