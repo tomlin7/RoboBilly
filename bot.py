@@ -67,6 +67,7 @@ client.load_extension('cogs.fun')
 client.load_extension('cogs.chess')
 client.load_extension('cogs.events')
 client.load_extension('cogs.error_handling')
+client.load_extension('cogs.ajian')
 
 #===================================== EVENTS =======================================#
 
