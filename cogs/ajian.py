@@ -13,7 +13,8 @@ class Ajian(commands.Cog):
         """
         >.<
         """
-        await ctx.send("no u")
+        if ctx.invoked_subcommand is None:
+            await ctx.send("no u")
         
     @ajian.command()
     async def bonk(self, ctx):
