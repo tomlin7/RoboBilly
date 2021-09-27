@@ -19,14 +19,14 @@ class Ajian(commands.Cog):
     @ajian.command()
     async def bonk(self, ctx):
         if random.choice([True, False]):
-            await ctx.send(f"_bonks ajian{('', '**gently**')[bool(random.randint(0, 10) == 5)]}_")
+            await ctx.send(f"*bonks ajian {('like hell wtf', '**gently**')[bool(random.randint(0, 10) == 5)]}*")
         else:
             await ctx.send("You got bonked by ajian, get got!")
 
 
     @ajian.command()
     async def hug(self, ctx):
-        await ctx.send("*ajian hugs back* 🤍")
+        await ctx.send("*ajian hugs back*  🤍")
 
     @ajian.command()
     async def owo(self, ctx):
