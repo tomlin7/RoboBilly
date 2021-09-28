@@ -70,7 +70,7 @@ class Ajian(commands.Cog):
             colour=_embed_colour
         )
         final.set_image(url=image_url)
-        final.set_footer(text=f"Submitted by <@{ctx.message.author.id}>")
+        final.set_footer(text=f"Submitted by {ctx.message.author}")
 
         await ctx.send(embed=final)
 
