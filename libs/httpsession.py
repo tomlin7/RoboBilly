@@ -13,4 +13,4 @@ http_session = ClientSession(
 )
 
 async def close_session():
-    http_session.close()
+    await http_session.close()
