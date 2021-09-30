@@ -29,7 +29,7 @@ def reputation(userid, collection):
     return users[0]["reputation"]
 
 def getEmbed(Title, msg):
-    embed = discord.Embed(title=Title, description=msg, color=discord.Color.blue())
+    embed = discord.Embed(title=Title, description=msg, color=discord.Color.dark_theme())
     return embed
 
 def does_not_exist(userid, collection):
