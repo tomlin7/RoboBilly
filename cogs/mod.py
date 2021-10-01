@@ -35,7 +35,7 @@ def does_not_exist(userid, collection):
     return collection.count_documents(check_query) == 0
 
 
-class mod(commands.Cog):
+class Mod(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
@@ -500,4 +500,4 @@ class mod(commands.Cog):
 
         
 def setup(bot):
-    bot.add_cog(mod(bot))
+    bot.add_cog(Mod(bot))

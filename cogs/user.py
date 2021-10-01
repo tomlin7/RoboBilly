@@ -1,13 +1,18 @@
-###### USER MODULE ######
+"""
+User module
+"""
+
 import discord
 import random
 import asyncio
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions, BadArgument
-import requests, json
+
+import requests, json, pyfiglet
 from datetime import timedelta, datetime
-import pyfiglet
-class user(commands.Cog):
+
+
+class User(commands.Cog):
     api_key = "bbde6a19c33fb4c3962e36b8187abbf8"
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
 

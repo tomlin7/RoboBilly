@@ -1,3 +1,7 @@
+"""
+ModMail module
+"""
+
 import discord
 import asyncio
 from discord.ext import commands
@@ -6,7 +10,7 @@ from discord.ext.commands import has_permissions, MissingPermissions, BadArgumen
 from libs import config
 
 
-class modmail(commands.Cog):
+class ModMail(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -149,4 +153,4 @@ class modmail(commands.Cog):
 #===================================== ADD COG ======================================#
 
 def setup(bot): # a extension must have a setup function
-	bot.add_cog(modmail(bot))
+	bot.add_cog(ModMail(bot))
