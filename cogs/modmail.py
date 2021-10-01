@@ -2,27 +2,13 @@ import discord
 import asyncio
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions, BadArgument
-import json 
 
-with open('./config.json', 'r') as f:   
-    try:
-        data = json.load(f)
-        _mails_channel = data["mails_channel"]
-        _server_name = data["server_name"]
-    except:
-        print("config.json is not configured correctly")
+from libs import config
 
-class DataClass(object):
-    mails_channel = _mails_channel
-    server_name = _server_name
-        
 
 class modmail(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        data = DataClass()
-        self.mails_channel = data.mails_channel
-        self.server_name = data.server_name
 
     @commands.command()
     @commands.guild_only()
@@ -30,7 +16,7 @@ class modmail(commands.Cog):
     async def setup(self, ctx):
         await ctx.trigger_typing()
         await asyncio.sleep(2)
-        channel = discord.utils.get(ctx.guild.channels, name=self.mails_channel)
+        channel = discord.utils.get(ctx.guild.channels, name=config.mails_channel_name)
         if channel is None:
             guild = ctx.guild
             overwrites = {
@@ -38,7 +24,7 @@ class modmail(commands.Cog):
                 guild.me: discord.PermissionOverwrite(read_messages=True)
             }
 
-            mod_channel = await guild.create_text_channel(self.mails_channel, overwrites=overwrites)
+            mod_channel = await guild.create_text_channel(config.mails_channel_name, overwrites=overwrites)
             embed = discord.Embed(
                 title='Setup completed',
                 description=f"{mod_channel.name} is created.",
@@ -86,18 +72,14 @@ class modmail(commands.Cog):
         if not message.content.startswith('[]'):
             if isinstance(message.channel, discord.channel.DMChannel) and message.author != self.bot.user:
                 try:
-                    # guild
-                    guild = discord.utils.get(self.bot.guilds, name=self.server_name)
-
                     # send to server
-                    channel = discord.utils.get(guild.channels, name=self.mails_channel)
                     embed_to = discord.Embed(
                         title='Mod Mail Received',
                         description=f"sent by: {message.author} \nmessage: {message.content} \nuser id: {message.author.id}",
                         color = discord.Color.blue(),
                     )
                     embed_to.set_footer(text="use reply <id> <message>")
-                    await channel.send(embed=embed_to)
+                    await config.mails_channel.send(embed=embed_to)
 
                     # report result to user
                     embed_reply = discord.Embed(
@@ -109,7 +91,7 @@ class modmail(commands.Cog):
                 except:
                     # report result to user
                     embed_reply = discord.Embed(
-                        title='Sorry😔',
+                        title='Sorry 😔',
                         description=f"I couldn't send your message to moderators",
                         color = discord.Color.red(),
                     )
@@ -124,7 +106,8 @@ class modmail(commands.Cog):
         if user is not None:
             # EMBED report result to user
             embed_reply = discord.Embed(
-                title=f'Replied by {ctx.author.name}',
+                title='Reply from Moderator',
+                # title=f'Replied by {ctx.author.name}',
                 description=f"{message}",
                 color = discord.Color.blue(),
             )

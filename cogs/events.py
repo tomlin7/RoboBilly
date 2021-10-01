@@ -1,5 +1,7 @@
+import discord
 from discord.ext import commands
 
+from libs import config
 
 class Events(commands.Cog):
     """
@@ -10,7 +12,11 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print("Session Started.")
+        print(f'We have logged in as {self.bot.user}')
+        await self.bot.change_presence(activity=discord.Game(name=config.special_event))
+        config.load_config(self.bot)
+
+        print("Session started.")
 
 
 def setup(bot):

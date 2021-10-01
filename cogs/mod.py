@@ -1,7 +1,7 @@
+"""
+Mod module
+"""
 
-############## MODERATION MODULE ##############
-
-import os
 import discord
 import asyncio
 from discord.ext import commands
@@ -12,13 +12,11 @@ from datetime import datetime
 import pymongo
 from pymongo import MongoClient
 
-with open("./config.json", "r") as f:
-    config = json.load(f)
-    mongo_url = config['mongo_url']
-cluster = MongoClient(os.getenv("MONGO_URL"))
+from libs import config
+
+cluster = MongoClient(config.MONGO_URL)
 repdb = cluster["ReputationData"]
 
-# functions:
 def rsetup(col):
     col = str(col)
     return repdb[col]
@@ -38,11 +36,9 @@ def does_not_exist(userid, collection):
 
 
 class mod(commands.Cog):
-    ## MAIN
     def __init__(self, bot):
         self.bot = bot
     
-    ## subclasses
     class count_num:
         def __init__(self, client):
             client.value = 0
@@ -54,7 +50,6 @@ class mod(commands.Cog):
             client.value += 1
             return client.value
     
-    # ROOT FUNCTIONS
     async def get_muted_role(self, guild):
         muted_role = discord.utils.get(guild.roles, name='Muted')
         if muted_role is None:
@@ -115,7 +110,7 @@ class mod(commands.Cog):
         log_channel = discord.utils.get(guild.text_channels, name="billy-logs")
         await log_channel.send(embed=log_embed)
     
-    ## MOD COMMANDS
+
     @commands.command(name='kick', aliases=['k'])
     @has_permissions(kick_members=True)
     async def kick(self, ctx, user: discord.Member, *_):

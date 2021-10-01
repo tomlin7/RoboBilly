@@ -66,11 +66,12 @@ class Stackoverflow(commands.Cog):
                     f"[⬆ {item['score']}    "
                     f"👀 {item['view_count']}     "
                     f"💬 {item['answer_count']}   "
-                    f"[🏷 {', '.join(item['tags'][:3])}]"
+                    f"🏷 {', '.join(item['tags'][:3])}]"
                     f"({item['link']})"
                 ),
                 inline=False)
         embed.set_footer(text="View the original link for more results.")
+        
         try:
             await ctx.send(embed=embed)
         except HTTPException:

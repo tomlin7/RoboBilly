@@ -3,7 +3,7 @@ from discord.ext import commands
 
 import difflib, math
 
-QUESTION_MARK_ICON = "https://cdn.discordapp.com/emojis/512367613339369475.png"
+QUESTION_MARK_ICON = "https://cdn.discordapp.com/attachments/822420465250861096/893413947061964860/question.png"
 
 class ErrorHandling(commands.Cog):
     def __init__(self, bot):
@@ -22,7 +22,7 @@ class ErrorHandling(commands.Cog):
             embed.description = f"Command is on cooldown. Try again after {math.ceil(error.retry_after)} seconds!"
             await ctx.send(embed=embed)
         else:
-            print(error)
+            raise error
     
     async def send_command_suggestion(self, ctx: commands.Context, command_name: str) -> None:
         """Sends user similar commands if any can be found."""

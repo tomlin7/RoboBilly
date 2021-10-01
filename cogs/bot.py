@@ -20,7 +20,6 @@ class Bot(commands.Cog):
     	    ping = str(self.bot.latency * 1000)
     	    embed = discord.Embed(title="Pong!", description=f'Latency: {ping} ms', color = discord.Color.dark_theme())
         await ctx.send(embed=embed)
-        print("Event: ", ctx.author.name, " checked latency.")
     
     @commands.command()
     async def prefix(self, ctx):
@@ -28,7 +27,6 @@ class Bot(commands.Cog):
             prefix = str(ctx.prefix)
             embed = discord.Embed(title="Prefix", description=f"Bot's prefix is: `{prefix}`", color = discord.Color.dark_theme())
         await ctx.send(embed=embed)
-        print("Event: ", ctx.author.name, " checked prefix")
     
     @commands.command(aliases=["src", "sourcecode", "botsrc"])
     async def source(self, ctx):
@@ -36,7 +34,6 @@ class Bot(commands.Cog):
             prefix = str(ctx.prefix)
             embed = discord.Embed(title="/src", description="[source code on github](https://github.com/basement-team/RoboBilly)", color = discord.Color.dark_theme())
         await ctx.send(embed=embed)
-        print("Event: ", ctx.author.name, " checked bot src")
 
 	
 def setup(bot):
