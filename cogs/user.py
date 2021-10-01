@@ -282,4 +282,4 @@ To send lengthy code, paste it into <https://paste.myst.rs/> and send the link o
 #===================================== ADD COG ======================================#
 
 def setup(bot):
-    bot.add_cog(user(bot))
+    bot.add_cog(User(bot))
