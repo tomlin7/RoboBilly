@@ -1,6 +1,6 @@
 import discord, json, os
 
-prefix = '.'
+prefix = '[]'
 
 owner = None
 guild = None

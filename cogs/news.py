@@ -76,7 +76,7 @@ class News(commands.Cog):
         await self.send_news()
 
     # @commands.command(name="news")
-    async def send_news(self, ctx):
+    async def send_news(self):
         # news channel not configured
         if config.news_channel is None:
             return
