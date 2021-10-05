@@ -75,7 +75,11 @@ class News(commands.Cog):
         """
         await self.send_news()
 
-    # @commands.command(name="news")
+    @commands.command(name="news", aliases=["sn", "send_news", "snm"])
+    @commands.is_owner()
+    async def send_news_manually(self, ctx):
+        await self.send_news()
+
     async def send_news(self):
         # news channel not configured
         if config.news_channel is None:
