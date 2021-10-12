@@ -193,7 +193,7 @@ class User(commands.Cog):
         await ctx.send('https://tenor.com/view/the-office-steve-carell-please-leave-get-out-move-gif-3579774')
 
     @commands.command(name='codeblocks', aliases=['codeblock', 'cb', 'myst'])
-    async def codeblocks(self, ctx, *, args = "nothing"):
+    async def codeblocks(self, ctx, *args):
         async with ctx.channel.typing():
             thing = discord.Embed(title="Code Blocks", description="""**__Use codeblocks to send code in a message!__**
 
@@ -207,6 +207,22 @@ To make a codeblock, surround your code with \`\`\`
 To send lengthy code, paste it into <https://paste.myst.rs/> and send the link of the paste into chat.""", color=discord.Color.dark_theme())
         await (ctx.channel).send(embed=thing)
         print(f"Event: {ctx.author.name}  used codeblocks")
+    
+    @commands.command(name='example', aliases=['Example', 'eg', 'eg.'])
+    async def example(self, ctx, *args):
+        async with ctx.channel.typing():
+            thing = discord.Embed(title="Example", description="""**__How to create a Minimal, Reproducible Example__**
+
+When asking a question, people will be better able to provide help if you provide code that they can easily understand and use to reproduce the problem. This is referred to by community members as creating a minimal, reproducible example (**reprex**), a minimal, complete and verifiable example (**mcve**), or a minimal, workable example (**mwe**). Regardless of how it's communicated to you, it boils down to ensuring your code that reproduces the problem follows the following guidelines:
+
+Your code examples should be…
+
+• …Minimal – Use as little code as possible that still produces the same problem
+• …Complete – Provide all parts someone else needs to reproduce your problem in the question itself
+• …Reproducible – Test the code you're about to provide to make sure it reproduces the problem
+""", color=discord.Color.dark_theme())
+        await (ctx.channel).send(embed=thing)
+        print(f"Event: {ctx.author.name}  used example")
     
     @commands.command(name='pastemyst', aliases=['pm', 'pastebin', 'PasteMyst', 'paste'])
     async def pastemyst(self, ctx, *, args = "nothing"):
