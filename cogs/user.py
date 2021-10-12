@@ -215,11 +215,11 @@ To send lengthy code, paste it into <https://paste.myst.rs/> and send the link o
 
 When asking a question, people will be better able to provide help if you provide code that they can easily understand and use to reproduce the problem. This is referred to by community members as creating a minimal, reproducible example (**reprex**), a minimal, complete and verifiable example (**mcve**), or a minimal, workable example (**mwe**). Regardless of how it's communicated to you, it boils down to ensuring your code that reproduces the problem follows the following guidelines:
 
-Your code examples should be…
+**__Your code examples should be…__**
 
-• …Minimal – Use as little code as possible that still produces the same problem
-• …Complete – Provide all parts someone else needs to reproduce your problem in the question itself
-• …Reproducible – Test the code you're about to provide to make sure it reproduces the problem
+» **Minimal** – Use as little code as possible that still produces the same problem
+» **Complete** – Provide all parts someone else needs to reproduce your problem in the question itself
+» **Reproducible** – Test the code you're about to provide to make sure it reproduces the problem
 """, color=discord.Color.dark_theme())
         await (ctx.channel).send(embed=thing)
         print(f"Event: {ctx.author.name}  used example")
