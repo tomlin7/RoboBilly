@@ -55,14 +55,15 @@ class Rules(commands.Cog):
         
         if n is not None:
             try:
-                embed = discord.Embed(title=f'Rule {n}', color = discord.Color.dark_theme())
-                embed.add_field(name=rules[n - 1], value=ruleinfo[n - 1])
+                embed = discord.Embed(title=rules[n - 1], color = discord.Color.dark_theme())
+                embed.add_field(name=" ", value=ruleinfo[n - 1])
+                embed.set_footer(text=f'rule no. {n}')
             except:
                 embed = discord.Embed(color = discord.Color.dark_theme())
                 embed.add_field(name="Rule Not Found", value=f"Rule with index {n} doesn't exist.")
         else:
             embed = discord.Embed(title='Rule N', color = discord.Color.dark_theme())
-            embed.add_field(name="Usage", value="Pass the index of the rule to be shown as an argument as follows:\n > ```[]rule [number]```")
+            embed.add_field(name="Usage", value="Pass the index of the rule to be shown as an argument as follows...\n ```[]rule [number]```")
         
         await ctx.send(embed=embed)
 
@@ -79,11 +80,10 @@ class Rules(commands.Cog):
         embed = discord.Embed(title=f"#Rules", color = discord.Color.dark_theme())
 
         for i in range(len(rules)):
-            description = ("**{0}**\n```{1}```".format(rules[i], ruleinfo[i]))
-            embed.add_field(name=f"Rule {i + 1}", value=description, inline=False)
-        
-        embed.set_footer(text=f"Currently have {len(rules)} rules.")
-        await ctx.send(embed=embed)
+            embed.add_field(name=rules[i], value=f"```{ruleinfo[i]}```", inline=False)
+            embed.set_footer(text=f"rule no. {i + 1}/{len(rules)}.")
+            
+            await ctx.send(embed=embed)
         
 
 def setup(bot):
