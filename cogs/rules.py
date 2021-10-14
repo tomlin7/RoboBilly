@@ -76,11 +76,10 @@ class Rules(commands.Cog):
         """
         
         await ctx.trigger_typing()
-        
-        embed = discord.Embed(title=f"#Rules", color = discord.Color.dark_theme())
 
         for i in range(len(rules)):
-            embed.add_field(name=rules[i], value=f"```{ruleinfo[i]}```", inline=False)
+            embed = discord.Embed(title=rules[i], color = discord.Color.dark_theme())
+            embed.add_field(name=" ", value=f"```{ruleinfo[i]}```", inline=False)
             embed.set_footer(text=f"rule no. {i + 1}/{len(rules)}.")
             
             await ctx.send(embed=embed)
