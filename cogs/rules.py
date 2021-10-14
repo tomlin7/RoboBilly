@@ -41,7 +41,7 @@ class Rules(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="rule", aliases=["r", "ruleno"])
+    @commands.command(name="rule", aliases=["ruleno"])
     @commands.guild_only()
     @commands.cooldown(rate=1, per=3, type=BucketType.default)
     async def _rule(self, ctx, n: int=None):
