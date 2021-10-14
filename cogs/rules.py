@@ -56,7 +56,7 @@ class Rules(commands.Cog):
         if n is not None:
             try:
                 embed = discord.Embed(title=f'Rule {n}', color = discord.Color.dark_theme())
-                embed.add_field(name=rules[n - 1], value=ruleinfo[n - 1], inline=False)
+                embed.add_field(name=rules[n - 1], value=ruleinfo[n - 1])
             except:
                 embed = discord.Embed(color = discord.Color.dark_theme())
                 embed.add_field(name="Rule Not Found", value=f"Rule with index {n} doesn't exist.")
@@ -80,7 +80,7 @@ class Rules(commands.Cog):
 
         for i in range(len(rules)):
             description = ("**{0}**\n```{1}```".format(rules[i], ruleinfo[i]))
-            embed.add_field(name=f"Rule {i + 1}", value=description)
+            embed.add_field(name=f"Rule {i + 1}", value=description, inline=False)
         
         embed.set_footer(text=f"Currently have {len(rules)} rules.")
         await ctx.send(embed=embed)
