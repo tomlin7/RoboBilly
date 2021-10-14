@@ -55,8 +55,7 @@ class Rules(commands.Cog):
         
         if n is not None:
             try:
-                embed = discord.Embed(title=rules[n - 1], color = discord.Color.dark_theme())
-                embed.add_field(name=" ", value=ruleinfo[n - 1])
+                embed = discord.Embed(title=rules[n - 1], description=ruleinfo[n - 1], color = discord.Color.dark_theme())
                 embed.set_footer(text=f'rule no. {n}')
             except:
                 embed = discord.Embed(color = discord.Color.dark_theme())
@@ -78,8 +77,7 @@ class Rules(commands.Cog):
         await ctx.trigger_typing()
 
         for i in range(len(rules)):
-            embed = discord.Embed(title=rules[i], color = discord.Color.dark_theme())
-            embed.add_field(name=" ", value=f"```{ruleinfo[i]}```", inline=False)
+            embed = discord.Embed(title=rules[i], description=f"```{ruleinfo[i]}```", color = discord.Color.dark_theme())
             embed.set_footer(text=f"rule no. {i + 1}/{len(rules)}.")
             
             await ctx.send(embed=embed)
