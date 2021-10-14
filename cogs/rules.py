@@ -55,13 +55,13 @@ class Rules(commands.Cog):
         
         if n is not None:
             try:
-                embed = discord.Embed(title=f'Rule {n}', color=discord.Color.dark_mode())
+                embed = discord.Embed(title=f'Rule {n}', color = discord.Color.dark_theme())
                 embed.add_field(name=rules[n - 1], value=ruleinfo[n - 1], inline=False)
             except:
-                embed = discord.Embed(color=discord.Color.dark_mode())
+                embed = discord.Embed(color = discord.Color.dark_theme())
                 embed.add_field(name="Rule Not Found", value=f"Rule with index {n} doesn't exist.")
         else:
-            embed = discord.Embed(title='Rule N', color=discord.Color.dark_mode())
+            embed = discord.Embed(title='Rule N', color = discord.Color.dark_theme())
             embed.add_field(name="Usage", value="Pass the index of the rule to be shown as an argument as follows:\n > ```[]rule [number]```")
         
         await ctx.send(embed=embed)
@@ -76,7 +76,7 @@ class Rules(commands.Cog):
         
         await ctx.trigger_typing()
         
-        embed = discord.Embed(title=f"#Rules", color=discord.Color.dark_mode())
+        embed = discord.Embed(title=f"#Rules", color = discord.Color.dark_theme())
 
         for i in range(len(rules)):
             description = ("**{0}**\n```{1}```".format(rules[i], ruleinfo[i]))
