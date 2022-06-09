@@ -21,7 +21,7 @@ class Minecraft(commands.Cog):
     async def ip(self, ctx):
         embed = Embed(title="Basement Minecraft Servers", description="__**Info**__\nYour Minecraft version should match **1.17**.", color=Color.dark_theme())
         embed.add_field(name="Server 1", value="**IP Address**:`billysbasement.aternos.me`\n**OP**:<@!621397007332016145>", inline=False)
-        embed.add_field(name="Server 2", value="**IP Address**:`147.135.71.70:25592`\n**OP**:<@!517998886141558786>", inline=False)
+        embed.add_field(name="Server 2", value="**IP Address**:`51.79.163.221:25583`\n**OP**:<@!517998886141558786>", inline=False)
         await ctx.send(embed=embed)
     
     @mc.command(name="serverinfo", aliases=["sinfo", "mcinfo"])
@@ -50,9 +50,9 @@ class Minecraft(commands.Cog):
             embed.add_field(name="Server 1", value="IP Address: `billysbasement.aternos.me`\nOP: <@!621397007332016145>\nStatus: ⚫ Offline\n".format(), inline=False)
         
         if status2 is not None:
-            embed.add_field(name="Server 2", value="**IP Address**: `147.135.71.70:25592`\n**OP**: <@!517998886141558786>\n**Status**: 🟢 Online\n**Players Online**: {0}\n**Minecraft Version:** {1}\n**Latency**: {2}".format(status2.players.online, status2.version.name, status2.latency), inline=False)
+            embed.add_field(name="Server 2", value="**IP Address**: `51.79.163.221:25583`\n**OP**: <@!517998886141558786>\n**Status**: 🟢 Online\n**Players Online**: {0}\n**Minecraft Version:** {1}\n**Latency**: {2}".format(status2.players.online, status2.version.name, status2.latency), inline=False)
         else:
-            embed.add_field(name="Server 2", value="IP Address: `147.135.71.70:25592`\nOP: <@!517998886141558786>\nStatus: ⚫ Offline\n".format(), inline=False)
+            embed.add_field(name="Server 2", value="IP Address: `51.79.163.221:25583`\nOP: <@!517998886141558786>\nStatus: ⚫ Offline\n".format(), inline=False)
         
         embed.set_footer(text = f"Requested by {ctx.author.name}", icon_url = ctx.author.avatar_url)
         
