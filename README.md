@@ -27,31 +27,18 @@
 </p>
 
 ## Building & running
-
-The bot is written in **Python 3.8**, you can run it via `python bot.py` from command line or just use the `run.bat` file to run it. If you are missing packages make sure to run install mentioned ones in `requirements.txt` prior to building. Also all the files required to Launch to **Heroku** is included.
+The bot will work with **Python 3.8+**, you can run it via `python main.py` from command line or just use the `run.bat` file to run it. If you are missing packages make sure to run install mentioned ones in `requirements.txt` prior to building: `pip install -r requirements.txt`. 
 
 ## Configuration
 
-1. `config.json` is where all of the bot configuration will be placed. The only fields that are essential for running the bot are `Token` and `Prefix`.
+1. `/lib/config.py` is where all of the bot configuration will be placed. You can modify current placeholder values as desired.
 
-```json
-{
-    "Token": "get it from discord developer portal",
-    "Prefix": "[]",
-    "mails_channel": "mails",
-    "server_name": "server's name here"
-}
-```
-
-2. give the bot `Administrator` permissions.
-
-3. Run `setup` command in the discord server.(for running this command, the user will need administrator permissions)
+2. Make sure to run the `setup` command in the discord server.(for running this command, the user will need administrator permissions)
 
 ## Features
 <p>
 <img alt="Release" src=https://img.shields.io/github/v/release/billydevyt/RoboBilly?style=flat-square>
 </p>
-
 
 ### ⛏ Minecraft 
 #### Minecraft Module comes with most of the commands needed to check info of minecraft servers and the players online!
