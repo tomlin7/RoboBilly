@@ -5,9 +5,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, BucketType
 
-from .economy import functions as fn
-from .economy.emoji import setup_emojis
-from .economy.data import sync_data
+from .economy import *
 
 class Economy(commands.Cog):
     def __init__(self, bot):
@@ -20,7 +18,7 @@ class Economy(commands.Cog):
         """
         shows the leaderboard based on amount of wallet money.
         """
-        await fn.leaderboard(ctx=ctx)
+        await leaderboard(ctx=ctx)
 
 
     # noinspection SpellCheckingInspection
@@ -30,7 +28,7 @@ class Economy(commands.Cog):
         """
         The main work category
         """
-        await fn.work(ctx=ctx)
+        await work(ctx=ctx)
 
 
     # noinspection SpellCheckingInspection
@@ -39,7 +37,7 @@ class Economy(commands.Cog):
         """
         shows the list of available jobs and their respected salary
         """
-        await fn.work_list(ctx)
+        await work_list(ctx)
 
 
     @commands.command(name="apply", aliases=['workas', 'apply for', 'workapply', 'join', 'work_as', 'work_apply'])
@@ -49,7 +47,7 @@ class Economy(commands.Cog):
         :param ctx:
         :param job:
         """
-        await fn.apply(ctx, job)
+        await apply(ctx, job)
 
 
     @commands.command(name="beg", aliases=["Beg"])
@@ -57,7 +55,7 @@ class Economy(commands.Cog):
         """
         check for donations.
         """
-        await fn.beg(ctx=ctx)
+        await beg(ctx=ctx)
 
 
     @commands.command(name="balance", aliases=['bal', 'Balance'])
@@ -66,7 +64,7 @@ class Economy(commands.Cog):
         check the balance of the specified user, or the context author.
         :param _member:
         """
-        await fn.balance(ctx=ctx, _member=_member)
+        await balance(ctx=ctx, _member=_member)
 
 
     @work.error
@@ -85,7 +83,7 @@ class Economy(commands.Cog):
         :param _member:
         :param ctx:
         """
-        await fn.steal(ctx, _member)
+        await steal(ctx, _member)
 
 
     # TODO: make deposit command
@@ -98,7 +96,7 @@ class Economy(commands.Cog):
         :param amount:
         :param part:
         """
-        await fn.deposit(ctx=ctx)
+        await deposit(ctx=ctx)
 
 def setup(bot):
 	bot.add_cog(Economy(bot))
