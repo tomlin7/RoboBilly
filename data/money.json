@@ -1,0 +1,36 @@
+{
+    "users": {
+        "1": {
+            "name": "example_user1",
+            "wallet": 0
+        },
+        "2": {
+            "name": "example_user2",
+            "wallet": 0
+        },
+        "3": {
+            "name": "example_user3",
+            "wallet": 0
+        },
+        "4": {
+            "name": "example_user4",
+            "wallet": 0
+        },
+        "5": {
+            "name": "example_user5",
+            "wallet": 0
+        },
+        "699589680408297553": {
+            "name": "billyeatcookies#8444",
+            "job": 1,
+            "wallet": 3290,
+            "bank": 0
+        },
+        "460608954226049024": {
+            "name": "PP#4017",
+            "job": 1,
+            "wallet": 688,
+            "bank": 0
+        }
+    }
+}
