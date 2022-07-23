@@ -27,7 +27,7 @@ class Math(commands.Cog):
             return
         
         result = evaluate(source)
-        embed = discord.Embed(title="💡 Math Interpreter", color = discord.Color.dark_theme())
+        embed = discord.Embed(title="💡 Billy's Math Interpreter", color = discord.Color.dark_theme())
         
         if result is not None:
             embed.add_field(name='Output:', value=f"> {result}\n")

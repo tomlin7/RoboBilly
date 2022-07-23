@@ -27,7 +27,7 @@ class BrainFuck(commands.Cog):
             return
         
         result = brainfuck.evaluate(source)
-        embed = discord.Embed(title="🧠 BrainFuck Interpreter", color = discord.Color.dark_theme())
+        embed = discord.Embed(title="🧠 Billy's BrainFuck Interpreter", color = discord.Color.dark_theme())
 
         if result is not None or result != "":    
             embed.add_field(name='Output', value=f"> {result}")

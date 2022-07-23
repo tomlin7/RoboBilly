@@ -318,8 +318,9 @@ class Mod(commands.Cog):
         
     @commands.command(name='activity', aliases=["presence", "changeactivity"])
     @has_permissions(manage_messages=True)
-    async def activity(self, ctx, _activity="beanson"):
+    async def activity(self, ctx, *, _activity="beanson"):
         await self.bot.change_presence(activity=discord.Game(name=_activity))
+        await ctx.send(f"activity changed to {_activity}")
         
     @commands.command(name="rep", aliases=['reputation'])
     @has_permissions(manage_messages=True)
