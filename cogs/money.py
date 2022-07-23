@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, BucketType
 
-from .economy import fn as fn
+from .economy import functions as fn
 from .economy.emoji import setup_emojis
 from .economy.data import sync_data
 
