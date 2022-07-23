@@ -27,7 +27,14 @@
 </p>
 
 ## Building & running
-The bot will work with **Python 3.8+**, you can run it via `python main.py` from command line or just use the `run.bat` file to run it. If you are missing packages make sure to run install mentioned ones in `requirements.txt` prior to building: `pip install -r requirements.txt`. 
+The bot will work with **Python 3.8+**, make sure to install required packages using the following command
+```
+pip install -r requirements.txt
+```
+you can run the bot using the following command or just using the `run.bat`
+```
+python main.py
+```
 
 ## Configuration
 
