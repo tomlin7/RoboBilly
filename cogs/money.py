@@ -5,7 +5,8 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot, BucketType
 
-from .economy import *
+from .economy.data import sync_data
+from .economy.functions import *
 
 class Economy(commands.Cog):
     def __init__(self, bot):
