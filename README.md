@@ -47,24 +47,118 @@ The bot is written in **Python 3.8**, you can run it via `python bot.py` from co
 
 3. Run `setup` command in the discord server.(for running this command, the user will need administrator permissions)
 
-## What is new?
+## Features
 <p>
 <img alt="Release" src=https://img.shields.io/github/v/release/billydevyt/RoboBilly?style=flat-square>
 </p>
 
-- counting (need a channel called 'counting')
-- Emojify text
 
-## Features
-
-|Feature|Description|
-|--:|:--|
-|ModMail system|Makes it easier for users to contact moderators and admins for help.|
-|Rich Interpreters|Run commands from discord channels! `BrainFuck`, `JB` languages are currently supported.|
-|Moderation Module|All Moderation tools needed to keep the server safe and peaceful.|
-|User Module|A lot of Fun & useful commands.|
-|custom commands|custom command module, add custom commands|
-|Error Handling|error handling module|
+### ⛏ Minecraft 
+#### Minecraft Module comes with most of the commands needed to check info of minecraft servers and the players online!
+- coord 
+- **mc**
+    - server info
+    - players online
+    - player info
+### 🔰🔰 Stackoverflow
+#### Got a quick question? do a stackoverflow right from discord! 😉
+- **stackoverflow**
+### **>.<** Weebs
+#### Get amazing news and info about anime, thanks to @DriftAsimov 
+- **anime**
+### 🐈Catify
+#### Catify me! ᓇᘏᗢ
+- catify
+### 🐍 CheatSheet
+#### python cheatsheets from https://cheat.sh/python/ 
+- cheat
+### ♟ Chess
+#### Have a chess game right from discord! thanks to @billyeatcookies 
+- chess
+    - for more info on available commands, check [discord chess!](https://github.com/billyeatcookies/discord-chess)
+### 🐙 GithubInfo
+#### Got a repository or github user to search up? well you can, right from discord!
+- github
+### 📝 Latex
+#### Render your latex code right from discord! share it quickly!
+- latex
+### 🎁 Fun!
+#### Buncha fun commands to keep the server entertained!
+- 8ball
+- clap
+- cursive
+- emojify
+- emojify2
+- epicgamerrate
+- greentext
+- hack 
+- imagine
+- kill
+- lemmegoogle
+- lenny
+- owo
+- simprate
+- snipe
+- uselessweb 
+- yasahiroify 
+### 👤 User 
+#### Rest of the fun commands, with a lot of utilities!
+- ascii
+    - make ascii arts from discord!
+- bing 
+- codeblocks 
+- dontasktoask 
+- git
+    - The holy git command set! *git push billy outerspace*
+- goodmorning!
+- goodnight!
+- google 
+    - let me google that for you!
+- hi 
+    - hi!
+- info
+    - user info
+- pastemyst 
+- say
+    - repeat me! 
+- weather
+    - billy, hows the weather today!
+### 💪🏻 Moderation 
+#### Moderation shall be done!
+- activity 
+- ban 
+- kick 
+- leaderboard 
+- mute 
+- myrep 
+- purge 
+- rep 
+- reset 
+- slowmode 
+- thanks 
+- unmute
+### 📧 ModMail
+#### Modmail service to contact mods easily through bot's dms!
+- reply 
+- setup
+### 📜 Rules
+#### Show individual or whole rules as part of moderation, see `rules.json` to set it up!
+- rule 
+- rules
+## ⚙ Misc
+- brainfuck
+    - billy's brainfuck interpreter! go crazy!
+- help
+    - the holy help command
+### 🤖 Bot
+- source
+    - bot's repository, means rn where you are, here!
+### 🔧 Jishaku
+- jishaku
+    - management done pog!
+### 🛠Owner
+- close_http_session
+    - close http session used by some of the commands, recommended to use it before killing the bot's process
 
 ## Contributing
 
