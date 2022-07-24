@@ -11,18 +11,18 @@
 
 <p align="center">
     <img alt="Discord" src="https://img.shields.io/discord/750945243305869343?label=Basement&style=flat-square">
-    <!-- <img alt="Travis (.com)" src="https://travis-ci.org/github/billydevyt/RoboBilly"> -->
-    <!-- <img alt="Python" src=https://img.shields.io/github/pipenv/locked/python-version/billydevyt/RoboBilly> -->
-    <img alt="Release" src=https://img.shields.io/github/v/release/billydevyt/RoboBilly?style=flat-square>
+    <!-- <img alt="Travis (.com)" src="https://travis-ci.org/github/basement-team/RoboBilly"> -->
+    <!-- <img alt="Python" src=https://img.shields.io/github/pipenv/locked/python-version/basement-team/RoboBilly> -->
+    <img alt="Release" src=https://img.shields.io/github/v/release/basement-team/RoboBilly?style=flat-square>
     <img alt="Heroku" src="https://img.shields.io/badge/heroku-passing-green?style=flat-square">
-    <img alt="License" src="https://img.shields.io/github/license/billydevyt/RoboBilly?style=flat-square">
+    <img alt="License" src="https://img.shields.io/github/license/basement-team/RoboBilly?style=flat-square">
 </p>
 
 <p align="center">
     <a href="#building--running">Building & running</a> •
     <a href="#features">Features</a> •
-    <a href="https://github.com/billydevyt/RoboBilly/blob/main/LICENSE">License</a> •
-    <a href="https://github.com/billydevyt/RoboBilly/blob/main/.github/CODE_OF_CONDUCT.md">Code of Conduct</a> •
+    <a href="https://github.com/basement-team/RoboBilly/blob/main/LICENSE">License</a> •
+    <a href="https://github.com/basement-team/RoboBilly/blob/main/.github/CODE_OF_CONDUCT.md">Code of Conduct</a> •
     <a href="#contributing">Contributing</a>
 </p>
 
@@ -44,7 +44,7 @@ python main.py
 
 ## Features
 <p>
-<img alt="Release" src=https://img.shields.io/github/v/release/billydevyt/RoboBilly?style=flat-square>
+<img alt="Release" src=https://img.shields.io/github/v/release/basement-team/RoboBilly?style=flat-square>
 </p>
 
 ### ⛏ Minecraft 
