@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-    "Don't bully me pls"
+    Discord Bot with amazing features! (scroll down)
 </p>
 
 <br/>
